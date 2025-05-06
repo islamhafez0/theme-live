@@ -21,13 +21,8 @@
           <div class="testimonail_slider_para">
             <h3>{{ block.settings.para }}</h3>
           </div>
-          {% if block.settings.image != blank %}
-            <div class="testimonial_slider_image">
-              {% render 'picture-element', image: block.settings.image, size: '430x300' %}
-            </div>
-          {% endif %}
           <div class="testimonail_slider_btn">
-            <a class="btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_text }}</a>
+            <a href="{{ block.settings.btn_link }}">{{ block.settings.btn_text }}</a>
           </div>
         </div>
       {% endfor %}
@@ -42,9 +37,7 @@
     margin-right: 6px;
   }
   .{{ section.id }} .custom_testimonail{
-    {% if section.settings.back_image != blank %}
     background-image: url('{{ section.settings.back_image | img_url: 'master' }}');
-    {% endif %}
     width: 100%;
     height: 80vh;
   }
@@ -472,11 +465,6 @@
             "type": "richtext",
             "id": "para",
             "label": "Paragraph"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
           },
           {
             "type": "richtext",

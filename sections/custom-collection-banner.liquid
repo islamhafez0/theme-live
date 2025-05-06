@@ -23,12 +23,9 @@
       
     <div class="custom-collection-banner-text">
       {% if collection.metafields.custom.collection_banner_title != blank %}
-        {% comment %}  
-        the class name: custom-collection-banner-heading in the file sections/custom-collection-banner.liquid changed from h2 to  h1 when doing seo on page optimizations
-        {% endcomment %}
-        <h1 class="custom-collection-banner-heading">
+        <h2 class="custom-collection-banner-heading">
           {{- collection.metafields.custom.collection_banner_title -}}
-        </h1>
+        </h2>
       {% endif %}
       <div class="cq-custom-banner-description">{{ collection.description }}</div>
     </div>
@@ -54,13 +51,10 @@
 
     <div class="custom-collection-banner-text">
       <div class="custom-collection-banner-box">
-       {% comment %}  
-        the class name: custom-collection-banner-heading in the file sections/custom-collection-banner.liquid changed from h2 to  h1 when doing seo on page optimizations
-        {% endcomment %}
         {% if collection.metafields.custom.collection_banner_title != blank %}
-          <h1 class="custom-collection-banner-heading">
+          <h2 class="custom-collection-banner-heading">
             {{- collection.metafields.custom.collection_banner_title -}}
-          </h1>
+          </h2>
         {% elsif collection.url == 'collections/all' %}
           <h2 class="custom-collection-banner-heading">SHOP ALL - Clean, Effective, Natural always</h2>
         {% endif %}

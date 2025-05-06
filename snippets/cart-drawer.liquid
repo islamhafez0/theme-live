@@ -27,10 +27,7 @@
         <div class="drawer__inner-empty">
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
-         {% comment %}
-              cart__empty-text in the file cart-drawer.liquid changed from h1 to a regular div for the purpose of SEO on-page optimizations
-               {% endcomment %}
-              <div class="cart__empty-text">{{ 'sections.cart.empty' | t }}</div>
+              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
               <button
                 class="drawer__close"
                 type="button"
@@ -59,10 +56,7 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        {% comment %}
-              drawer__heading in the file cart-drawer.liquid changed from h2 to a regular div for the purpose of SEO on-page optimizations
-               {% endcomment %}
-        <div class="drawer__heading">{{ 'sections.cart.title' | t }}</div>
+        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
         <button
           class="drawer__close"
           type="button"

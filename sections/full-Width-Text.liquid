@@ -9,9 +9,7 @@
 </div>
 <style>
   .full_width_mainContainer{
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
+    max-width: {{ section.settings.page_size }}px;
     background-color: {{ section.settings.bgColor}};
     margin: 0 auto;
   }
@@ -21,13 +19,15 @@
   .full_width_blogTextContainer{
     width: 100%;
     display: flex;
-    padding: 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
     flex-wrap: nowrap;
-    text-align: left;
   }
   .miniPara p{
+    text-align: center;
     color: {{ section.settings.paraColor }};
-    font-size: {{ section.settings.paraSize }}px;
+    font-size: {{ section.settings.paraSize }};
     font-weight: {{ section.settings.paraWeight }};
     font-family: Brandon;
   }

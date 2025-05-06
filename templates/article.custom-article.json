@@ -13,7 +13,8 @@
       "block_order": [
         "featured_image"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "e2368009-5dab-4a26-9e8a-33eb3ce7e966": {
       "type": "rich-text",
@@ -49,7 +50,9 @@
         "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-text-1",
         "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-button-1"
       ],
-      "custom_css": [],
+      "custom_css": [
+
+      ],
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",

@@ -83,10 +83,7 @@
       {%- else -%}
         <div class="card__content">
           <div class="card__information">
-            {% comment %}
-            the class name: card__heading in the file card-collection.liquid changed from h3 to a regular div for the purpose of SEO on-page optimizations
-            {% endcomment %}
-            <div class="card__heading"></div>
+            <h3 class="card__heading">
               <a
                 {% if card_collection == blank %}
                   role="link" aria-disabled="true"
@@ -104,6 +101,7 @@
                   <span class="icon-wrap">{% render 'icon-arrow' %}</span>
                 {%- endif %}
               </a>
+            </h3>
             {%- if card_collection.description != blank -%}
               <p class="card__caption">
                 {{- card_collection.description | strip_html | truncatewords: 12 -}}
@@ -148,9 +146,6 @@
     {%- if card_collection == blank -%}
       <div class="card__content">
         <div class="card__information">
-          {% comment %}
-            the class name: card__heading in the file card-collection.liquid changed from h3 to a regular div for the purpose of SEO on-page optimizations
-            {% endcomment %}
           <h3 class="card__heading card__heading--placeholder">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.collection_title' | t }}

@@ -25,7 +25,8 @@
         },
         "5d61df74-8e56-4c58-a549-b07179055b70": {
           "type": "content",
-          "settings": {}
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -34,7 +35,8 @@
         "ed025c86-2425-4464-9c98-fb39c26bf09f",
         "5d61df74-8e56-4c58-a549-b07179055b70"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "e2368009-5dab-4a26-9e8a-33eb3ce7e966": {
       "type": "rich-text",
@@ -71,7 +73,9 @@
         "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-button-1"
       ],
       "disabled": true,
-      "custom_css": [],
+      "custom_css": [
+
+      ],
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",

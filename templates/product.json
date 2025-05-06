@@ -1,1 +1,242 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"rating_AUymY3":{"type":"rating","settings":{}},"price":{"type":"price","settings":{}},"description":{"type":"description","settings":{}},"badges_VCpka3":{"type":"badges","settings":{}},"buy_buttons_dXFUgW":{"type":"buy_buttons","settings":{"picker_type":"button"}},"clearpay_on_site_messaging_payments_messaging_Pfg4Ra":{"type":"shopify:\/\/apps\/clearpay-on-site-messaging\/blocks\/payments-messaging\/5d763983-d3e6-4888-9966-4e1170b26ae9","settings":{"text_align":"inherit","margin_top":16,"margin_bottom":16,"color":"","size":"sm","intro_text":"or","show_interest_free":true,"payment_amount_is_bold":true,"show_with":true,"logo_type":"badge","logo_theme":"black-on-mint","modal_link_style":"circled-info-icon","modal_theme":"white","breakpoint":749,"text_align_mobile":"inherit","margin_top_mobile":16,"margin_bottom_mobile":16,"show_lower_limit":true,"show_upper_limit":true,"show_if_outside_limits":true,"product":"{{product}}"}},"klarna_on_site_messaging_app_block_ipEg8y":{"type":"shopify:\/\/apps\/klarna-on-site-messaging\/blocks\/app-block\/b95936a9-74b6-4a95-8103-6a1b6459c25e","settings":{"data_key":"credit-promotion-auto-size","locale_option":"geolocation","locale_fallback":"","theme":"default","topPadding":"0","bottomPadding":"0","messagePrefix":""}},"584b5e3f-3229-4d8f-8a74-0de34a972261":{"type":"benefitBlock","settings":{}},"3ecc0fa9-11f1-442a-a8d0-00dd3a45cf62":{"type":"custom-accordion","settings":{"detail_title_1":"{{ product.metafields.custom.accordion_title_1.value }}","accordion_text_1":"{{ product.metafields.custom.accordion_description_1 | metafield_tag }}","detail_title_2":"{{ product.metafields.custom.accordion_title_2.value }}","accordion_text_2":"{{ product.metafields.custom.accordion_description_2 | metafield_tag }}","detail_title_3":"{{ product.metafields.custom.accordion_title_3.value }}","accordion_text_3":"{{ product.metafields.custom.accordion_description_3 | metafield_tag }}","detail_title_4":"{{ product.metafields.custom.accordion_title_4.value }}","accordion_text_4":"{{ product.metafields.custom.accordion_description_4 | metafield_tag }}","detail_title_5":"{{ product.metafields.custom.accordion_title_press_awards.value }}","accordion_text_5":"{{ product.metafields.custom.accordion_description_press_awards | metafield_tag }}","detail_title_6":"","accordion_text_6":""}},"custom_accordion_2_Ut4jYB":{"type":"custom-accordion-2","settings":{"title":"{{ product.metafields.custom.accordions_with_title_title.value }}","icon":"shopify:\/\/shop_images\/ic___icon___feather.svg","detail_title_1":"{{ product.metafields.custom.accordion_title_5.value }}","accordion_text_1":"{{ product.metafields.custom.accordion_description_5 | metafield_tag }}","detail_title_2":"{{ product.metafields.custom.accordion_title_6.value }}","accordion_text_2":"{{ product.metafields.custom.accordion_description_6 | metafield_tag }}","detail_title_3":"","accordion_text_3":"","detail_title_4":"","accordion_text_4":"","detail_title_5":"","accordion_text_5":"","detail_title_6":"","accordion_text_6":""}}},"block_order":["title","rating_AUymY3","price","description","badges_VCpka3","buy_buttons_dXFUgW","clearpay_on_site_messaging_payments_messaging_Pfg4Ra","klarna_on_site_messaging_app_block_ipEg8y","584b5e3f-3229-4d8f-8a74-0de34a972261","3ecc0fa9-11f1-442a-a8d0-00dd3a45cf62","custom_accordion_2_Ut4jYB"],"settings":{}},"herbal_components_JpcCYt":{"type":"herbalComponents","settings":{"testimonies":"shopify:\/\/shop_images\/Asset_1.webp","bgColor":"#e8decc","breakerColor":"#333333","topBottomPadding":0,"rightLeftPadding":0,"breakerTh":1}},"r_routine_QRjixm":{"type":"r--routine","blocks":{"product_F9htrW":{"type":"product","settings":{"product":"{{ product.metafields.custom.complementary_product_1.value }}"}},"product_JBytmH":{"type":"product","settings":{"product":"{{ product.metafields.custom.complementary_product_2.value }}"}},"product_7XU9Wa":{"type":"product","settings":{"product":"{{ product.metafields.custom.complementary_product_3.value }}"}}},"block_order":["product_F9htrW","product_JBytmH","product_7XU9Wa"],"settings":{"subtitle":"How To Use","title":"Always cleanse hands before application.","content":"<p>{{ product.metafields.custom.how_to_use_content.value }}<\/p>","title_tag":"h2","products_subtitle":"For Maximum Benefit","products_title":"Use in combination with"}},"r_benefits_iW7hQR":{"type":"r--benefits","blocks":{"cta_AG4KLh":{"type":"cta","settings":{"text":"View Benefits","link":"#accordion-Benefits"}},"cta_Xrwebr":{"type":"cta","settings":{"text":"View Key Photo-Actives","link":"#accordion-Key Phyto-Actives"}},"cta_DY48Ee":{"type":"cta","settings":{"text":"View Full Ingredient List","link":"#accordion-Full Ingredient List"}},"benefit_wpyfQx":{"type":"benefit","repeater":"{{ product.metafields.custom.benefits.value }}","settings":{"icon":"{{ block.repeater.icon.value }}","title":"{{ block.repeater.title.value }}","subtitle":"{{ block.repeater.subtitle.value }}"}}},"block_order":["cta_AG4KLh","cta_Xrwebr","cta_DY48Ee","benefit_wpyfQx"],"settings":{"tag":"","bg_color":"rgba(0,0,0,0)","display_on":"","subtitle":"{{ product.metafields.custom.benefits_section_subtitle.value }}","title":"{{ product.metafields.custom.benefits_section_title.value }}","title_tag":"h2","image":"{{ product.metafields.custom.benefits_section_image.value }}","image_side":"left"}},"r_reviews_tCfdEx":{"type":"r--reviews","blocks":{"review_NARWeH":{"type":"review","settings":{"name":"{{ product.metafields.custom.testimonial_1_name.value }}","stars":5,"badge_title":"Verified Customer","title":"{{ product.metafields.custom.testimonial_1_heading_.value }}","review":"<p>{{ product.metafields.custom.testimonial_1_copy | metafield_tag }}<\/p>"}},"review_UEtB96":{"type":"review","settings":{"name":"Anonymous{{ product.metafields.custom.testimonial_2_name.value }}","stars":5,"badge_title":"Verified Customer","title":"{{ product.metafields.custom.testimonial_2_heading.value }}","review":"<p>{{ product.metafields.custom.testimonial_2_copy | metafield_tag }}<\/p>"}},"review_hAr48E":{"type":"review","settings":{"name":"{{ product.metafields.custom.testimonial_3_name.value }}","stars":5,"badge_title":"Verified Customer","title":"{{ product.metafields.custom.testimonial_3_heading.value }}","review":"<p>{{ product.metafields.custom.testimonial_3_copy | metafield_tag }}<\/p>"}}},"block_order":["review_NARWeH","review_UEtB96","review_hAr48E"],"settings":{"subtitle":"Reviews","title":"Potted Proof of our Products","title_tag":"h2"}},"r_founders_message_E394A4":{"type":"r--founders-message","blocks":{"heading_hWryVK":{"type":"heading","settings":{"heading":"<p>A MESSAGE FROM OUR FOUNDER<\/p>"}},"text_kFMrHC":{"type":"text","settings":{"description":"{{ product.metafields.custom.founders_message_content_rich_ | metafield_tag }}"}},"signature_iqRwwE":{"type":"signature","settings":{"signature_desktop":"shopify:\/\/shop_images\/Minelle.png","signature_mobile":"shopify:\/\/shop_images\/Minelle.png"}}},"block_order":["heading_hWryVK","text_kFMrHC","signature_iqRwwE"],"settings":{"background_desktop":"{{ product.metafields.custom.founders_message_first_image.value }}","background_mobile":"{{ product.metafields.custom.founders_message_first_image.value }}","image_width":135}},"r_image_and_text_8aAjmF":{"type":"r--image-and-text","custom_css":[".main-title{text-align: left;justify-content: flex-start; align-items: stretch;}",".subtitle{text-align: left;justify-content: flex-start; align-items: stretch;}",".cta-area{text-align: left; justify-content: flex-start; align-items: stretch;"],"settings":{"tag":"","bg_color":"#fbf4de","display_on":"","spacing":"","subtitle":"Herbal Gardens","title":"For a GLOW UP <i>without<\/i> compromise,","title_tag":"h2","content":"<p>We harvest the power of selected plants, backed by thousands of years of herbal medicine research and trials, to create 100% natural, phyto-active concentrated, nutrient-dense treatments that target specific skin concerns without negative side effects.<\/p>","image_side":"left","image":"shopify:\/\/shop_images\/Herbal-Garden---Body-Banner0_f0968606-1e11-4b17-886d-4cda57cd916c.webp","cta_title":"Find Out More","cta_url":"shopify:\/\/blogs\/our-blog\/behind-the-brand"}},"640b33a6-549b-4ff0-a88c-ce1fba32ee9f":{"type":"custom-featured-product","blocks":{"a184fa7f-21d6-4c3d-9216-0340dd49af82":{"type":"block","settings":{"product":"bakuchiol-antioxidant-complex"}},"2a1e3581-07d7-4c5e-a59b-3aa8387f127b":{"type":"block","settings":{"product":"detoxifying-night-brightening-serum"}},"4aaff99d-809c-499f-9f54-4523a0a1ad09":{"type":"block","settings":{"product":"makeup-melting-cleansing-oil"}},"d5cd4f4b-b90e-4463-addd-7b96addf3afa":{"type":"block","settings":{"product":"acne-oil-control-serum"}}},"block_order":["a184fa7f-21d6-4c3d-9216-0340dd49af82","2a1e3581-07d7-4c5e-a59b-3aa8387f127b","4aaff99d-809c-499f-9f54-4523a0a1ad09","d5cd4f4b-b90e-4463-addd-7b96addf3afa"],"settings":{"background_color":"#eeeeeb","heading":"<h2>You may also like<\/h2><h2>Top picks from our Garden<\/h2>","btn_text":"","btn_link":"shopify:\/\/collections\/all","align":"center"}},"16890916938103ac67":{"type":"apps","blocks":{"f912ac91-447b-4352-b99d-9d853fb6cbc3":{"type":"shopify:\/\/apps\/reviews-io\/blocks\/reviewsio-polaris\/92a082e5-b297-4e88-b428-ac96cbc505f9","settings":{"star":"#274439","review_type":"product_review,store_review,questions","per_page":4,"primary_btn_bg_color":"#242424","primary_btn_border_color":"#242424","primary_btn_text_color":"#ffffff","secondary_btn_border_color":"#274439","secondary_btn_text_color":"#242424","border_color":"#274439","heading_text_color":"#242424","heading_font":"assistant_n4","body_text_color":"#000000","badge_icon_color":"#274439","badge_text_color":"#274439","enable_rich_snippets":true,"show_location":false,"show_tab_selector":true,"show_dates":false,"show_avatar":true,"enable_sentiment_analysis":true,"enable_replies":false,"widget_spacing":6,"capitalise_headers_and_buttons":false,"show_review_title":true,"default_sort":"highest_rating"}}},"block_order":["f912ac91-447b-4352-b99d-9d853fb6cbc3"],"settings":{"include_margins":true}},"related-products":{"type":"related-products","settings":{"heading":"You may also like...","heading_size":"h2","products_to_show":4,"columns_desktop":4,"color_scheme":"background-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"mobile_layout":"slider","columns_mobile":"2","padding_top":36,"padding_bottom":28}}},"order":["main","herbal_components_JpcCYt","r_routine_QRjixm","r_benefits_iW7hQR","r_reviews_tCfdEx","r_founders_message_E394A4","r_image_and_text_8aAjmF","640b33a6-549b-4ff0-a88c-ce1fba32ee9f","16890916938103ac67","related-products"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor_4g9E6f": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "klarna_on_site_messaging_app_block_ipEg8y": {
+          "type": "shopify:\/\/apps\/klarna-on-site-messaging\/blocks\/app-block\/b95936a9-74b6-4a95-8103-6a1b6459c25e",
+          "settings": {
+            "data_key": "credit-promotion-auto-size",
+            "locale_option": "geolocation",
+            "locale_fallback": "",
+            "theme": "default",
+            "topPadding": "0",
+            "bottomPadding": "0",
+            "messagePrefix": ""
+          }
+        },
+        "clearpay_on_site_messaging_payments_messaging_Pfg4Ra": {
+          "type": "shopify:\/\/apps\/clearpay-on-site-messaging\/blocks\/payments-messaging\/5d763983-d3e6-4888-9966-4e1170b26ae9",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "sm",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "white",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "badges_VCpka3": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "buy_buttons_dXFUgW": {
+          "type": "buy_buttons",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "rating_AUymY3": {
+          "type": "rating",
+          "settings": {
+          }
+        },
+        "584b5e3f-3229-4d8f-8a74-0de34a972261": {
+          "type": "benefitBlock",
+          "settings": {
+          }
+        },
+        "3ecc0fa9-11f1-442a-a8d0-00dd3a45cf62": {
+          "type": "custom-accordion",
+          "settings": {
+            "detail_title_1": "{{ product.metafields.custom.accordion_title_1.value }}",
+            "accordion_text_1": "{{ product.metafields.custom.accordion_description_1 | metafield_tag }}",
+            "detail_title_2": "{{ product.metafields.custom.accordion_title_2.value }}",
+            "accordion_text_2": "{{ product.metafields.custom.accordion_description_2 | metafield_tag }}",
+            "detail_title_3": "{{ product.metafields.custom.accordion_title_3.value }}",
+            "accordion_text_3": "{{ product.metafields.custom.accordion_description_3 | metafield_tag }}",
+            "detail_title_4": "{{ product.metafields.custom.accordion_title_4.value }}",
+            "accordion_text_4": "{{ product.metafields.custom.accordion_description_4 | metafield_tag }}",
+            "detail_title_5": "{{ product.metafields.custom.accordion_title_5.value }}",
+            "accordion_text_5": "{{ product.metafields.custom.accordion_description_5 | metafield_tag }}",
+            "detail_title_6": "{{ product.metafields.custom.accordion_title_6.value }}",
+            "accordion_text_6": "{{ product.metafields.custom.accordion_description_6 | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "vendor_4g9E6f",
+        "title",
+        "price",
+        "klarna_on_site_messaging_app_block_ipEg8y",
+        "clearpay_on_site_messaging_payments_messaging_Pfg4Ra",
+        "badges_VCpka3",
+        "description",
+        "buy_buttons_dXFUgW",
+        "rating_AUymY3",
+        "584b5e3f-3229-4d8f-8a74-0de34a972261",
+        "3ecc0fa9-11f1-442a-a8d0-00dd3a45cf62"
+      ],
+      "settings": {
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like...",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "mobile_layout": "slider",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "640b33a6-549b-4ff0-a88c-ce1fba32ee9f": {
+      "type": "custom-featured-product",
+      "blocks": {
+        "a184fa7f-21d6-4c3d-9216-0340dd49af82": {
+          "type": "block",
+          "settings": {
+            "product": "bakuchiol-antioxidant-complex"
+          }
+        },
+        "2a1e3581-07d7-4c5e-a59b-3aa8387f127b": {
+          "type": "block",
+          "settings": {
+            "product": "detoxifying-night-brightening-serum"
+          }
+        },
+        "4aaff99d-809c-499f-9f54-4523a0a1ad09": {
+          "type": "block",
+          "settings": {
+            "product": "makeup-melting-cleansing-oil"
+          }
+        },
+        "d5cd4f4b-b90e-4463-addd-7b96addf3afa": {
+          "type": "block",
+          "settings": {
+            "product": "acne-oil-control-serum"
+          }
+        }
+      },
+      "block_order": [
+        "a184fa7f-21d6-4c3d-9216-0340dd49af82",
+        "2a1e3581-07d7-4c5e-a59b-3aa8387f127b",
+        "4aaff99d-809c-499f-9f54-4523a0a1ad09",
+        "d5cd4f4b-b90e-4463-addd-7b96addf3afa"
+      ],
+      "disabled": true,
+      "settings": {
+        "background_color": "#eeeeeb",
+        "heading": "<p>You may also like...<\/p>",
+        "btn_text": "SHOP ALL PRODUCTS",
+        "btn_link": "shopify:\/\/collections\/all",
+        "align": "center"
+      }
+    },
+    "r_bundle_contents_M3hkAw": {
+      "type": "r--bundle-contents",
+      "settings": {
+        "subtitle": "What’s Included?",
+        "title": "This set contains",
+        "content": "",
+        "title_tag": "h2",
+        "color_bg": "#f2f6fb",
+        "color_text": "#121212"
+      }
+    },
+    "16890916938103ac67": {
+      "type": "apps",
+      "blocks": {
+        "f912ac91-447b-4352-b99d-9d853fb6cbc3": {
+          "type": "shopify:\/\/apps\/reviews-io\/blocks\/reviewsio-polaris\/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+            "star": "#000000",
+            "review_type": "product_review,questions",
+            "per_page": 8,
+            "primary_btn_bg_color": "#000000",
+            "primary_btn_border_color": "#000000",
+            "primary_btn_text_color": "#ffffff",
+            "secondary_btn_border_color": "#000000",
+            "secondary_btn_text_color": "#000000",
+            "border_color": "#000000",
+            "heading_text_color": "#000000",
+            "heading_font": "helvetica_n4",
+            "body_text_color": "#000000",
+            "badge_icon_color": "#000000",
+            "badge_text_color": "#000000",
+            "enable_rich_snippets": true,
+            "show_location": true,
+            "show_tab_selector": false,
+            "show_dates": true,
+            "show_avatar": true,
+            "enable_replies": false,
+            "widget_spacing": 0,
+            "capitalise_headers": false,
+            "capitalise_buttons": false,
+            "show_review_title": false,
+            "default_sort": "date_desc"
+          }
+        }
+      },
+      "block_order": [
+        "f912ac91-447b-4352-b99d-9d853fb6cbc3"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "640b33a6-549b-4ff0-a88c-ce1fba32ee9f",
+    "r_bundle_contents_M3hkAw",
+    "16890916938103ac67"
+  ]
+}

@@ -6,12 +6,12 @@
 {% assign product_size = meta_obj.unit_price %}
 {% assign skin_type = meta_obj.info4 %}
 
-<div class="product-info-area" data-sticky-position id="ProductInfo-{{ section.id }}" data-section="{{ section.id }}" data-url="{{ product.url }}">
+<div class="product-info-area" data-sticky-position id="ProductInfo-{{ section.id }}" data-section="{{ section.id }}" data-url="{{ product.url }}">  
   <div class="inner">
 
     {%- for block in section.blocks -%}
       {%- assign bs = block.settings -%}
-
+      
       {%- case block.type -%}
 
         {%- when 'badges' -%}
@@ -26,10 +26,10 @@
                 {% if skin_type != blank %}
                   <li>{{ skin_type }}</li>
                 {% endif %}
-              </ul>
+              </ul> 
             </div>
           {% endif %}
-
+        
         {%- when '@app' -%}
 
           {% render block %}
@@ -41,49 +41,22 @@
               {{ product.vendor }}
             </div>
           {% endif %}
-
+        
         {%- when 'title' -%}
 
           <h1 class="product-title">{{ product.title }}</h1>
-
+        
         {%- when 'price' -%}
 
-          {% liquid 
-            assign cheapest_price = current_variant.price
-
-            for selling_plan in current_variant.selling_plan_allocations 
-
-              if cheapest_price > selling_plan.price
-                assign cheapest_price = selling_plan.price
-              endif
-
-            endfor
-          
-          %}
-
           <p class="product-prices flex f-a-center" data-product-prices>
-
-            {% liquid 
-                assign lowest_price = current_variant.price
-
-                 if current_variant.selling_plan_allocations.size > 0
-                    for selling_plan in current_variant.selling_plan_allocations
-                        if selling_plan.per_delivery_price < lowest_price
-                            assign lowest_price = selling_plan.per_delivery_price
-                        endif
-                    endfor
-                 endif
-            
-            %}
-
             <span class="from">{{ 'products.product.price.from' | t }}</span>
-
-            <span data-price class="money product-price {% if lowest_price > current_variant.compare_at_price %}on-sale{% endif %}" data-price>
-                {{ lowest_price | money_without_trailing_zeros }}
+            
+            <span data-price class="money product-price {% if current_variant.compare_at_price > current_variant.price %}on-sale{% endif %}" data-price>
+              {{ current_variant.price | money_without_trailing_zeros }}
             </span>
 
-            <span data-compare-price class="money compare-at-price {% unless lowest_price > current_variant.compare_at_price %}hide{% endunless %}" data-compare-price>
-                {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+            <span data-compare-price class="money compare-at-price {% unless current_variant.compare_at_price > current_variant.price %}hide{% endunless %}" data-compare-price>
+              {{ current_variant.compare_at_price | money_without_trailing_zeros }}
             </span>
           </p>
 
@@ -100,7 +73,7 @@
           <div class="ruk_rating_snippet" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
 
         {%- when 'buy_buttons' -%}
-
+          
           {% include 'product--form' %}
 
         {% when 'custom-accordion-2' %}
@@ -116,14 +89,14 @@
             <ul class="product-accordion accordion" data-toggle-group='{
               "closeOthers": true
             }'>
-
+ 
               {% for i in (1..4) %}
                 {% capture accordion_title %}detail_title_{{i}}{% endcapture %}
                 {% capture accordion_content %}accordion_text_{{i}}{% endcapture %}
-
+              
                 {% if bs[accordion_title] != blank and bs[accordion_content] != blank %}
                   <li class="accordion-item" data-toggle-item="{{ forloop.index }}">
-                    <h3 class="accordion-header flex f-a-center f-j-between" data-toggle-trigger id="accordion-{{ bs[accordion_title] | handle }}">{{ bs[accordion_title] }}{% render 'icon-chevron' %}</h3>
+                    <h3 class="accordion-header flex f-a-center f-j-between" data-toggle-trigger>{{ bs[accordion_title] }}{% render 'icon-chevron' %}</h3>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -132,7 +105,7 @@
                 {% for i in (1..4) %}
                   {% capture accordion_title %}detail_title_{{i}}{% endcapture %}
                   {% capture accordion_content %}accordion_text_{{i}}{% endcapture %}
-
+                
                   {% if bs[accordion_title] != blank and bs[accordion_content] != blank %}
                     <div class="accordion-content" data-toggle-elem='{{ forloop.index }}'>
                       <div class="accordion-content-inner">
@@ -145,11 +118,11 @@
 
             </ul>
           </div>
-
-
-
+            
+          
+      
         {% when 'custom-accordion' %}
-
+            
           <ul class="product-accordion accordion" data-toggle-group='{
             "closeOthers": true
           }'>
@@ -157,10 +130,10 @@
             {% for i in (1..6) %}
               {% capture accordion_title %}detail_title_{{i}}{% endcapture %}
               {% capture accordion_content %}accordion_text_{{i}}{% endcapture %}
-
+            
               {% if bs[accordion_title] != blank and bs[accordion_content] != blank %}
                 <li class="accordion-item" data-toggle-item>
-                  <h3 class="accordion-header flex f-a-center f-j-between" data-toggle-trigger id="accordion-{{ bs[accordion_title] | handle }}">{{ bs[accordion_title] }}{% render 'icon-arrow-down' %}</h3>
+                  <h3 class="accordion-header flex f-a-center f-j-between" data-toggle-trigger>{{ bs[accordion_title] }}{% render 'icon-arrow-down' %}</h3>
                   <div class="accordion-content" data-toggle-elem>
                     {{ bs[accordion_content] }}
                   </div>
@@ -174,11 +147,11 @@
 
           {% if product.metafields.custom.info1 != blank or product.metafields.custom.info2 != blank or product.metafields.custom.info3 != blank or product.metafields.custom.info4 != blank %}
             <div class="product-benefits">
-
+              
               {% for i in (1..4) %}
                 {% capture benefit_icon %}icon{{i}}{% endcapture %}
                 {% capture benefit_info %}info{{i}}{% endcapture %}
-
+              
                 <div class="product-benefit">
                   <div class="icon-area">
                     <img src="{{ product.metafields.custom[benefit_icon] | img_url: 'master' }}" alt="" />
@@ -188,10 +161,10 @@
                   </div>
                 </div>
               {% endfor %}
-
+              
             </div>
           {% endif %}
-
+          
       {%- when 'collapsible_tab' -%}
 
         <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
@@ -211,7 +184,7 @@
             </div>
           </details>
         </div>
-
+      
       {%- when 'complementary' -%}
         <product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
           {%- if recommendations.performed and recommendations.products_count > 0 -%}
@@ -293,7 +266,7 @@
             <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
           {%- endif -%}
         </product-recommendations>
-
+        
       {%- when 'custom_liquid' -%}
 
         {{ block.settings.custom_liquid }}

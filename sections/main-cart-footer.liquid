@@ -53,10 +53,7 @@
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
                 <div class="totals">
-                  {% comment %}
-              the class name: totals__subtotal in the file cart-drawer.liquid changed from h2 to a regular div for the purpose of SEO on-page optimizations
-               {% endcomment %}
-                  <div class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</div>
+                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
                   <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
                 </div>
 

@@ -3,14 +3,8 @@
     <div class="image-with-text-main">
       <div class="image-with-text-box-1"><img src="{{ section.settings.image | img_url: 'master' }}"></div>
       <div class="image-with-text-box-2">
-        {% comment %}
-         Changes made By Mohamed Badawy to remove duplicated H1
-        code before edits was;
-        <h2 class="image-with-text-heading">{{ section.settings.heading }}</h2>
-        <div class="image-with-text-para">{{ section.settings.para }}</div>
-        {% endcomment %}
-        <h2 class="image-with-text-heading">{{ section.settings.heading }}</h2>
-        <div class="image-with-text-para">{{ section.settings.para }}</div>
+        <h1 class="image-with-text-heading">{{ section.settings.heading }}</h1>
+        <h3 class="image-with-text-para">{{ section.settings.para }}</h3>
         <div class="btnContainer">
           <a href="{{ section.settings.btnUrl }}">{{ section.settings.btnText }}</a>
           <hr class="underline">

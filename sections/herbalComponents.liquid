@@ -2,7 +2,7 @@
   {% if section.settings.logoImg != blank %}
     <div class="mainContainer">
       <div class="subContainer logoContainer header__heading-logo-wrapper">
-        <img src="{{ section.settings.logoImg | img_url: '1200x' }}" alt="Herbal Components">
+        <img src="{{ section.settings.logoImg | img_url: "medium" }}" alt="">
       </div>
     </div>
   {% endif %}
@@ -14,7 +14,7 @@
   {% if section.settings.testimonies != blank %}
     <div class="mainContainer">
       <div class="subContainer testimonies">
-        <img src="{{ section.settings.testimonies | img_url: '1200x' }}" alt="Herbal Components">
+        <img src="{{ section.settings.testimonies | img_url: "medium" }}" alt="">
       </div>
     </div>
   {% endif %}

@@ -1,29 +1,25 @@
 {% assign ss = section.settings %}
 
-<div class="keen-slider slider-{{ section.id }} {% if section.blocks.size < 2 %}visible{% endif %}"
-{% if section.blocks.size > 1 %}
-  data-keen-slider='{
-    "autoplay": {{ ss.autoplay | json }},
-    "autoplaySpeed": {{ ss.interval | times: 1000.00 | json }},
-    "duration": {{ ss.speed | times: 1000.00 | json }},
-    "fade": {{ ss.fade | json }},
-    "dots": {{ ss.dots | json }},
-    "adaptiveHeight": false,
-    "pauseOnHover": false,
-    "loop": true,
-    "responsive": [ 
-        {
-          "breakpoint": 834,
-          "settings": {
-            "autoplay": false,
-            "autoplayOnScroll": false,
-            "adaptiveHeight": true
-          }
+<div class="keen-slider slider-{{ section.id }}" data-keen-slider='{
+  "autoplay": {{ ss.autoplay | json }},
+  "autoplaySpeed": {{ ss.interval | times: 1000.00 | json }},
+  "duration": {{ ss.speed | times: 1000.00 | json }},
+  "fade": {{ ss.fade | json }},
+  "dots": {{ ss.dots | json }},
+  "adaptiveHeight": false,
+  "pauseOnHover": false,
+  "loop": true,
+  "responsive": [ 
+      {
+        "breakpoint": 834,
+        "settings": {
+          "autoplay": false,
+          "autoplayOnScroll": false,
+          "adaptiveHeight": true
         }
-    ]
-  }'
-{% endif %}
-> 
+      }
+  ]
+}'> 
 
   {% for block in section.blocks %}
     {% assign bs = block.settings %}
