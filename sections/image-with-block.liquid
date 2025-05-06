@@ -1,0 +1,733 @@
+<div class="image-with-block-{{ section.id }} img-with-block">
+  <div>
+    <div class="image-with-block-main">
+      <div class="image-with-block-box-2">
+        <div class="headingContainer deskTopBOx">
+          <div class="keyActions">{{ section.settings.keyActions }}</div>
+          <div>
+            <h1 class="image-with-block-heading">{{ section.settings.heading }}</h1>
+          </div>
+        </div>
+        <div class="image-with-block-sub">
+          <div class="blockMainContainer">
+            {% for block in section.blocks %}
+              <div class="blockContainer">
+                <div class="subBlockContainer">
+                  <div class="headingAndImg">
+                    <div class="miniHeading">
+                      <h3>{{ block.settings.miniHeading }}</h3>
+                    </div>
+                    <div class="miniImage">
+                      <img src="{{ block.settings.iconImage | img_url: 'master' }}">
+                    </div>
+                  </div>
+                  <div class="image-with-block-para">{{ block.settings.text }}</div>
+                </div>
+                <div class="subBlockContainer">
+                  <div class="headingAndImg">
+                    <div class="miniHeading">
+                      <h3>{{ block.settings.miniHeading1 }}</h3>
+                    </div>
+                    <div class="miniImage">
+                      <img src="{{ block.settings.iconImage1 | img_url: 'master' }}">
+                    </div>
+                  </div>
+                  <div class="image-with-block-para">{{ block.settings.text1 }}</div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="button-image-text-div">
+            <p class="button-image-text-text">{{ section.settings.button_text }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-with-block-box-1">
+        <div class="headingContainer headingContainerMob">
+          <div class="keyActions">{{ section.settings.keyActions }}</div>
+          <div>
+            <h1 class="image-with-block-heading">{{ section.settings.heading }}</h1>
+          </div>
+        </div>
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | img_url: 'master' }}">
+        {% else %}
+          <img src="{{ product.featured_image | img_url: 'master' }}" loading="eager">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .img-with-block{
+  background-color: {{ section.settings.background }}{% if section.settings.back_opacity != "0" %}{{section.settings.back_opacity}}{% endif %};
+  padding: 0 20px;
+  }
+  .image-with-block-{{ section.id }}   .image-with-block-main{
+  padding: {{ section.settings.body_padding_top_bottom_desktop }}px {{ section.settings.body_padding_right_left_desktop }}vw;
+  flex-direction: {{ section.settings.imageDirection }};
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  }
+  .image-with-block-{{ section.id }}        .image-with-block-box-1{
+  width: 43%;
+  display: flex;
+  padding: {{section.settings.imagePadding}}px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  }
+
+  .image-with-block-{{ section.id }}  .image-with-block-box-1 img{
+  width: 100%;
+  }
+
+  .image-with-block-{{ section.id }}          .image-with-block-para{
+  line-height: 1.5;
+        margin: 0
+  }
+  .image-with-block-{{ section.id }}       .image-with-block-box-2{
+  width: 50%;
+  padding: 0px 30px 0px 15px;
+  }
+  .keyActions{
+  color: {{ section.settings.keyColor }};
+  font-size: {{ section.settings.keySize }}px;
+  font-weight: {{ section.settings.keyWeight }};
+  line-height: 1.5em;
+  letter-spacing: 0px;
+  text-transform: none;
+  font-family: brandonGrotesque;
+  text-transform: uppercase;
+  }
+  .image-with-block-{{ section.id }} .image-with-block-heading{
+  width: 100%;
+  margin: 0;
+   color: {{section.settings.text_color_1}};
+   font-weight: {{section.settings.heading_font_weight_desktop}};
+   font-size: {{section.settings.heading_font_size_desktop}}px;
+   line-height: 1.2;
+   font-family: brandonGrotesque;
+   padding-bottom: 15px;
+  /*                text-align: center; */
+  }
+  .image-with-block-{{ section.id }}     .image-with-block-para ul li{
+   color: {{section.settings.para_color_1}};
+   font-weight: {{section.settings.para_font_weight_desktop}};
+   font-size: {{section.settings.para_font_size_desktop}}px;
+   letter-spacing: 0px;
+   font-family: brandonGrotesque;
+   padding-top: 10px
+  }
+  .image-with-block-para ul{
+  margin: 0;
+  padding: 0 0 0 20px;
+  }
+  .image-with-block-{{ section.id }}   .image-with-block-sub{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  }
+  .image-with-block-{{ section.id }}     .image-with-block-sub p{
+  margin: 0
+  }
+  .image-with-block-{{ section.id }} .blockMainContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+  width: 100%;
+  }
+  .image-with-block-{{ section.id }}   .blockContainer{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  }
+  .headingAndImg{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  }
+  .headingAndImg .miniHeading{
+  line-height: 1.5em;
+  letter-spacing: 0px;
+  text-transform: none;
+  font-weight: 700;
+  font-family: BrandonGrotesque;
+  }
+  .headingAndImg .miniImage{
+  width: 43px;
+  height: 43px;
+  }
+  .subBlockContainer{
+  width: 50%;
+  max-width: 255px;
+  display: flex;
+  padding: 10px 32px;
+  background: #fff;
+  margin: 16px;
+  margin-left: 0;
+  margin-right: 30px;
+  flex-wrap: wrap;
+  border-radius: {{ section.settings.borderTopLeft }}px {{ section.settings.borderTopRight }}px {{ section.settings.borderBottomRight }}px {{ section.settings.borderBottomLeft }}px;
+  border: 1px solid #000;
+  height: 100%;
+  }
+  .subBlockContainer:last-child{
+    margin-right:0;
+  }
+  .image-with-block-{{ section.id }}   .blockContainer img{
+  margin: 0px 0px 0px 0;
+  width: 100%;
+  }
+  .image-with-block-{{ section.id }}      .image-with-block-para p strong{
+  font-weight: 900;
+  font-size: 16px;
+  }
+  .image-with-block-{{ section.id }}    .button-image-text-text{
+  padding: {{ section.settings.padding_top_bottom_desktop }}px {{ section.settings.padding_right_left_desktop }}px {{ section.settings.padding_top_bottom_desktop }}px 0;
+  color: {{section.settings.text_color}};
+  font-weight: {{section.settings.font_weight_desktop}};
+  font-size: {{section.settings.font_size_desktop}}px;
+  line-height: 1.4;
+  letter-spacing: 0px;
+  font-family: brandonGrotesque;
+  }
+
+  .image-with-block-{{ section.id }} .button-image-text-text:hover{
+  transition:  box-shadow .6s ease-in;
+  }
+  .headingContainerMob{
+  display: none;
+  }
+
+  .miniHeading h3{
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: 0px;
+  color: #242424;
+  text-transform: none;
+  font-weight: 700;
+  font-family: brandonGrotesque;
+  }
+  @media only screen and (min-width:768px) and (max-width:1200px){
+    .image-with-block-{{ section.id }} .image-with-block-box-1, .image-with-block-{{ section.id }} .image-with-block-box-1 img{
+      display: none;
+      padding-bottom: 0 !important;
+    }
+    .keyActions, .image-with-block-{{ section.id }} .image-with-block-heading{
+      text-align: center;
+    }
+    .image-with-block-{{ section.id }} .blockMainContainer{
+      width: 100%;
+    }
+    .image-with-block-{{ section.id }} .image-with-block-box-2{
+      width: 100%;
+      padding: 0;
+    }
+    .subBlockContainer{
+      max-width: 100%;
+    }
+    .image-with-block-{{ section.id }} .image-with-block-heading{
+      padding-bottom: 0 !important;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+  .image-with-block-{{ section.id }}  .image-with-block-box-1{
+    display: block;
+  }
+  .image-with-block-{{ section.id }}  .image-with-block-box-2 {
+    width: 100%
+  }
+  .image-with-block-{{ section.id }}  .blockMainContainer {
+    width: 100%
+  }
+  .image-with-block-{{ section.id }}  .image-with-block-heading{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 38px;
+  }
+  .keyActions{
+    text-align: center;
+  }
+   .image-with-block-{{ section.id }}          .image-with-block-main {
+    flex-direction: {{ section.settings.mobileImgDirection }};
+    padding: {{ section.settings.body_padding_top_bottom_mobile }}px {{ section.settings.body_padding_right_left_mobile }}px;
+  }
+    .headingContainerMob{
+    display: block !important;
+  }
+  .deskTopBOx{
+    display: none;
+  }
+    .image-with-block-{{ section.id }}        .image-with-block-box-1{
+      display: flex;
+     width:100%;
+    padding: 20px 0px;
+    margin: 15px 0px;
+  }
+  .image-with-block-{{ section.id }} .image-with-block-box-2{
+    padding: 0;
+  }
+    .subBlockContainer{
+      max-width: 100%;
+    }
+    .img-with-block{
+      padding: 0px 30px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+
+
+  .image-with-block-{{ section.id }}       .image-with-block-box-2{
+  width:100%;
+  padding: 0px;
+    margin: 10px 0px;
+  }
+  .image-with-block-{{ section.id }}        .image-with-block-heading{
+   font-size: {{section.settings.heading_font_size_mobile}}px;
+   font-weight: 500;
+  }
+  .image-with-block-{{ section.id }}     .image-with-block-para p{
+   font-size: {{section.settings.para_font_size_mobile}}px;
+   margin: 0px;
+  }
+  .image-with-block-{{ section.id }}       .image-with-block-sub {
+    padding: 0;
+
+  }
+  .image-with-block-{{ section.id }} .blockContainer{
+        flex-direction: column;
+  }
+  .subBlockContainer{
+    margin-right: 0;
+  }
+  .img-with-block{
+    padding: 0px 30px;
+  }
+  .subBlockContainer{
+    width: 100%;
+    max-width: 100%;
+
+  }
+  .image-with-block-{{section.id}} .image-with-block-1{
+    display: flex;
+  }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Image With Block",
+    "settings": [
+      {
+      "type": "header",
+      "content": {
+        "en": "Mobile Responsive Settings"
+      }
+    },
+
+       {
+  "type": "range",
+  "id": "body_padding_top_bottom_mobile",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Section Padding Top/Bottom",
+  "default": 1
+},
+      {
+  "type": "range",
+  "id": "body_padding_right_left_mobile",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "vw",
+  "label": "Section Padding Right/Left",
+  "default": 6
+},
+      {
+  "type": "range",
+  "id": "heading_font_size_mobile",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Font size mobile",
+  "default": 30
+},
+
+       {
+  "type": "range",
+  "id": "para_font_size_mobile",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Answer Text Font size mobile",
+  "default": 16
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Section Body Padding And Background Color"
+      }
+    },
+      {
+  "type": "color",
+  "id": "background",
+  "label": "Background Color",
+  "default": "#fff"
+},
+      {
+  "type": "text",
+  "id": "back_opacity",
+  "label": "Background Color Transparency",
+  "info": "Like you can paste color code #b9d1ee33: first 6 digit + # paste in above color picker field (#b9d1ee); and last 2 digit paste this field(33)",
+  "default": "0"
+},
+       {
+  "type": "range",
+  "id": "body_padding_top_bottom_desktop",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Section Padding Top/Bottom",
+  "default": 1
+},
+      {
+  "type": "range",
+  "id": "body_padding_right_left_desktop",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "vw",
+  "label": "Section Padding Right/Left",
+  "default": 6
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Text Border Radius Settings"
+      }
+    },
+
+    {
+      "type": "range",
+      "id": "borderTopLeft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Left Border",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "borderTopRight",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Right Border",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "borderBottomRight",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Right Border",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "borderBottomLeft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Right Border",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Top Heading settings",
+      "info": "To change and customize the top Headings (Key Actives)"
+    },
+    {
+      "type": "text",
+      "id": "keyActions",
+      "default": "Key Actives",
+      "label": "Key Active Text"
+    },
+      {
+  "type": "color",
+  "id": "keyColor",
+  "label": "color Heading",
+  "default": "#000"
+},
+
+      {
+  "type": "range",
+  "id": "keySize",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Font size ",
+  "default": 16
+},
+      {
+  "type": "range",
+  "id": "keyWeight",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "Heading Font Weight",
+  "default": 500
+},
+
+      {
+      "type": "header",
+      "content": {
+        "en": "Image Settings"
+      }
+    },
+       {
+  "type": "image_picker",
+  "id": "image",
+  "label": "Image"
+      },
+      {
+  "type": "select",
+  "id": "imageDirection",
+  "label": "Image Direction",
+  "options": [
+    {
+      "value": "row-reverse",
+      "label": "Image to the right"
+    },
+    {
+      "value": "row",
+      "label": "Image to the left"
+    }
+  ],
+  "default": "row-reverse"
+},
+ {
+  "type": "range",
+  "id": "imagePadding",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "Image Padding",
+  "default": 40
+},
+      {
+  "type": "select",
+  "id": "mobileImgDirection",
+  "label": "Mobile Image Direction",
+  "options": [
+    {
+      "value": "column-reverse",
+      "label": "Image on the bottom"
+    },
+    {
+      "value": "column",
+      "label": "Image on the top"
+    }
+  ],
+  "default": "column-reverse"
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Heading Settings"
+      }
+    },
+       {
+  "type": "richtext",
+  "id": "heading",
+  "label": "Heading Text"
+},
+       {
+  "type": "color",
+  "id": "text_color_1",
+  "label": "color Heading",
+  "default": "#fff"
+},
+
+      {
+  "type": "range",
+  "id": "heading_font_size_desktop",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Font size Desktop",
+  "default": 16
+},
+      {
+  "type": "range",
+  "id": "heading_font_weight_desktop",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "Heading Font Weight",
+  "default": 500
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Paragraph Settings"
+      }
+    },
+       {
+  "type": "color",
+  "id": "para_color_1",
+  "label": "color para",
+  "default": "#fff"
+},
+  {
+  "type": "range",
+  "id": "para_font_size_desktop",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "para Text Font size Desktop",
+  "default": 16
+},
+      {
+  "type": "range",
+  "id": "para_font_weight_desktop",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "para Text Font Weight",
+  "default": 500
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Bottom Text Settings"
+      }
+    },
+      {
+  "type": "text",
+  "id": "button_text",
+  "label": "Text content",
+  "default": "JOIN NOW"
+},
+
+      {
+  "type": "color",
+  "id": "text_color",
+  "label": "Text color",
+  "default": "#fff"
+},
+
+      {
+  "type": "range",
+  "id": "font_size_desktop",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Button Font size Desktop",
+  "default": 16
+},
+      {
+  "type": "range",
+  "id": "font_weight_desktop",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "Button Font Weight",
+  "default": 500
+},
+      {
+  "type": "range",
+  "id": "padding_top_bottom_desktop",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Text Top/buttom Padding Desktop",
+  "default": 10
+},
+      {
+  "type": "range",
+  "id": "padding_right_left_desktop",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Text right/left Padding Desktop",
+  "default": 0
+}
+    ],
+   "blocks": [
+  {
+    "type": "text",
+    "name": "Text",
+    "settings": [
+    {
+      "type": "header",
+      "content": "Text settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "iconImage",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "miniHeading",
+      "label": "Mini Text "
+    },
+    {
+      "type": "image_picker",
+      "id": "iconImage1",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "miniHeading1",
+      "label": "Mini Text "
+    }
+    ]
+  }
+],
+   "presets": [
+  {
+    "name": "Image With Block"
+  }
+]
+  }
+{% endschema %}

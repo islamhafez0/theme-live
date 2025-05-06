@@ -1,0 +1,12 @@
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<div>
+  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    {{ form | payment_terms }}
+  {%- endform -%}
+</div>
+
+{% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}

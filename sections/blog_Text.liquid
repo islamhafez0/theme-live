@@ -1,0 +1,142 @@
+<div class="{{ section.id }} blogTextMainContainer">
+  <div class="subContainer">
+    <div class="blogTextContainer">
+      <div class="miniTextContainer">
+        <h1>{{ section.settings.miniHeading }}</h1>
+        <div class="miniText">{{ section.settings.miniText }}</div>
+      </div>
+      <div class="mainTextContainer">
+        <h1>{{ section.settings.mainHeading }}</h1>
+        <div class="mainText">{{ section.settings.mainText }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+      .{{ section.id }}.blogTextMainContainer{
+        max-width: {{ section.settings.page_size }}px;
+        margin: 0 auto;
+      }
+      .subContainer{
+         padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+      }
+      .blogTextContainer{
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        padding: 20px 40px;
+        flex-wrap: nowrap;
+        gap: 50px;
+      }
+      .miniText p{
+      font-size: 18px;
+      line-height: 1.6em;
+      letter-spacing: 0px;
+      color: #000000b5;
+      text-transform: none;
+      font-weight: 400;
+      font-family: BrandonGrotesque;
+        text-align: right;
+    }
+      .miniTextContainer h1{
+        text-align: right;
+        font-family: Brandon;
+        text-align: right;
+    }
+      .miniTextContainer{
+  width: 25%;
+    }
+      .mainTextContainer{
+  width: 75%;
+    }
+    .mainText p{
+      color: #000;
+      font-size: 16;
+      font-weight: 500;
+      font-family: Brandon;
+      text-align: left;
+    }
+    .mainTextContainer h1{
+       font-size: 32px;
+      line-height: 1.5em;
+      letter-spacing: 0px;
+      color: #131313;
+      text-transform: none;
+      font-family: BrandonGrotesque;
+      font-weight: 400;
+    }
+</style>
+{% schema %}
+{
+  "name": "Blog Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1000
+    },
+      {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "miniHeading",
+      "label": "Mini Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "miniText",
+      "label": "Mini Text"
+    },
+    {
+      "type": "text",
+      "id": "mainHeading",
+      "label": "Mini Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "mainText",
+      "label": "Mini Text"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Blog Text"
+    }
+  ]
+}
+{% endschema %}

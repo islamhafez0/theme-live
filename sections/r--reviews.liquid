@@ -1,0 +1,144 @@
+{% assign ss = section.settings %}
+
+<div class="section-header">
+  {% if ss.subtitle != blank %}
+    <h3 class="subtitle">{{ ss.subtitle }}</h3>
+  {% endif %}
+  
+  {% if ss.title != blank %}
+    <{{ ss.title_tag }} class="h2">
+      {{ ss.title | newline_to_br }}
+    </{{ ss.title_tag }}>
+  {% endif %}
+</div>
+
+<ul class="reviews-list flex f-j-center f-wrap--desktop" data-keen-slider='{
+  "id": "slider{{section.id}}",
+  "enableWhen": "(max-width: 834px)",
+  "slidesPerView": 1,
+  "arrows": false,
+  "loop": true
+}'>
+  {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+
+    <li>
+      
+      <div class="review-item">
+        <div class="review-header flex f-j-between f-a-center">
+          <p class="review-name">{{ bs.name }}</p>
+
+          <div class="stars-badge-area flex f-a-center">
+            <div class="stars flex">
+              {% for i in (1..bs.stars) %}
+                <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#xz94b5bmsa)">
+                        <path d="m6.5 1 1.545 3.13 3.455.505L9 7.07l.59 3.44L6.5 8.885 3.41 10.51 4 7.07 1.5 4.635l3.455-.505L6.5 1z" fill="#274438" stroke="#274438" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="xz94b5bmsa">
+                            <path fill="#fff" transform="translate(.5)" d="M0 0h12v12H0z"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+              {% endfor %}
+            </div>
+
+            <span class="review-badge">
+              {{ bs.badge_title }}
+            </span>
+          </div>
+        </div>
+
+        <div class="review-main">
+          <h4>{{ bs.title }}</h4>
+          <div class="rte">
+            {{ bs.review }}
+          </div>
+        </div>
+      </div>
+
+    </li>
+  {% endfor %}
+</ul>
+
+{% schema %}
+{
+  "name": "R - Featured Reviews",
+  "tag": "section",
+  "class": "r--reviews wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Reviews",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "Potted Proof of our Products",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Anonymous"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "unit": "s",
+          "label": "Stars",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "badge_title",
+          "label": "Badge Title",
+          "default": "Verified Customer"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Review"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Featured Reviews"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+{% assign ss = section.settings %}
+
+<div {% if ss.hash != blank %}id="{{ ss.hash }}"{% endif %} class="section--inner section-{{ section.id }} {% if ss.bg_color != blank and ss.bg_color != 'rgba(0,0,0,0)' %}has-bg{% endif %}"
+{% if ss.enable_reveal_animation %}data-reveal='{
+  "distance": "0px"
+}'{% endif %}
+style="
+--main-color: {{ ss.bg_color }};"
+>
+  
+  <div class="image-and-text-flex flex f-wrap--tablet">
+    
+    <div class="image-area image-side--{{ ss.image_side }}">
+      
+      <div class="main-image flex" 
+      style="
+        {% if ss.video_aspect_ratio != blank %}
+          --aspect-ratio: {{ ss.video_aspect_ratio | remove: '%' }}%;
+        {% endif %}
+      "
+      >
+        {% include 'helper--image-and-video', image_size: '500x', bs: ss, video_class: 'object-fit--cover', image_class: 'object-fit--cover' %}
+      </div>
+      
+    </div>
+
+    <div class="content-area flex f-a-center has-stripe--{{ ss.enable_stripe }}" style="background: {{ ss.bg_color }};">
+
+      <div class="inner {{ ss.spacing }} text-center" {% if ss.enable_reveal_animation %}
+              data-reveal='{
+              "delay": {{ delay | json }}
+            }'
+            {% endif %}>
+        
+        {% if ss.subtitle != blank %}
+          <h3 class="subtitle">{{ ss.subtitle }}</h3>
+        {% endif %}
+
+        {% if ss.title != blank %}
+          <{{ ss.title_tag }} class="main-title h2 {% if ss.title_mobile != blank %} desktop-only {% endif %}"
+          >
+            {{ ss.title | newline_to_br }}
+          </{{ ss.title_tag }}>
+        {% endif %}   
+
+        {% if ss.content != blank %}
+          <div class="rte text-left">
+            {{ ss.content }}
+          </div>
+        {% endif %}
+
+        {% if ss.cta_title != blank %}
+          <div class="cta-area"
+            >
+            <a href="{{ ss.cta_url }}" class="btn btn--small">
+              {{ ss.cta_title }}
+              {% include 'icon-cta-arrow' %}
+            </a>
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% include 'section-display' %}
+
+{% schema %}
+{
+    "name":"R - Image and Text",
+    "tag": "section",
+    "class": "r-section image-and-text wrapper",
+    "settings":[
+      {
+        "type":"text",
+        "id":"tag",
+        "label":"Limit to tag",
+        "info": "Only used when section is on a product page"
+      },
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"Background Colour"
+      },
+      {
+         "type": "select",
+         "id": "display_on",
+         "default": "",
+         "options": [
+            { "value": "", "label": "Both"},
+            { "value": "desktop-only", "label": "Desktop Only"},
+            { "value": "tablet-only", "label": "Mobile Only"}
+         ],
+         "label": "Display On"
+      },
+      {
+         "type": "select",
+         "id": "spacing",
+         "default": "",
+         "options": [
+            { "value": "", "label": "Normal"},
+            { "value": "inner--compact", "label": "Compact"}
+         ],
+         "label": "Vertical Spacing"
+      },
+      {
+        "type":"text",
+        "id":"subtitle",
+        "label":"Subtitle"
+      },
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Main Title"
+      },
+      {
+         "type": "select",
+         "id": "title_tag",
+         "default": "h2",
+         "options": [
+            { "value": "h1", "label": "h1"},
+            { "value": "h2", "label": "h2"},
+            { "value": "h3", "label": "h3"},
+            { "value": "h4", "label": "h4"},
+            { "value": "h5", "label": "h5"},
+            { "value": "h6", "label": "h6"}
+         ],
+         "label": "Title Tag"
+      },
+      {
+        "type":"richtext",
+        "id":"content",
+        "label":"Content"
+      },
+      {
+        "type": "select",
+        "id": "image_side",
+        "default": "left",
+        "options": [
+          { "value": "left", "label": "Left"},
+          { "value": "right", "label": "Right"}
+        ],
+        "label": "Image Side"
+      },
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+      },
+      {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image -- mobile"
+      },
+      {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+      },
+      {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "Video -- mobile"
+      },
+      {
+        "type":"text",
+        "id":"cta_title",
+        "label":"CTA Title"
+      },
+      {
+        "type":"url",
+        "id":"cta_url",
+        "label":"CTA URL"
+      }
+    ],
+    "presets":[
+        {
+            "name":"R - Image and Text"
+        }
+    ]
+}
+{% endschema %}

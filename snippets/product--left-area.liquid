@@ -1,0 +1,304 @@
+<div class="product-image-area product-image-area-{{ product.id }}" data-sticky-position>
+  {% include 'product--badges', extra_class: 'desktop-only' %}
+
+  {% assign image_amount = product.images.size %}
+
+  {% assign image_mod = image_amount | modulo: 2 %}  
+
+  {% capture fullScreenToggle %}
+    data-method-call='[
+      {
+        "componentId": "fullscreenSlider",
+        "on": "click",
+        "method": "goToSlide",
+        "args": [indexNum, true]
+      }
+    ]' 
+
+    data-class-change='
+    [
+      {
+        "target": ".fullscreen-slider",
+        "class": "shown",
+        "method": "add",
+        "on": "click"
+      },
+      {
+        "target": ".product-image-area-{{ product.id }}",
+        "class": "fullscreen-shown",
+        "method": "add",
+        "on": "click"
+      }
+    ]
+    '
+  {% endcapture %}
+  
+  {% assign image_count0 = 0 %}
+
+  <div data-product-images-container>
+    <div class="desktop-images-container desktop-only">
+      <ul class="product-images flex f-grid--s is-even--{% if image_mod == 0  %}true{% else %}false{% endif %}" data-desktop-product-images>
+
+        {% include 'product--left-area-main-image', size: '550x', large_size: '1000x' %}
+
+        {% for media in product.media %}
+          {% assign alt = media.alt | remove: 'full-width' | default: product.title %}
+          {% assign image_variant_id = '' %}
+          {% assign size = '200x' %}
+
+          {% if media.alt contains 'full-width' %}
+            {% assign size = '900x' %}
+          {% endif %}
+
+          {% assign image = blank %}
+          {% for image in product.images %}
+            {% if image.src == media.src %}
+              {% assign image = image %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if current_variant != blank and image.variants != blank and image.variants.first.id != current_variant.id %}
+            {% continue %}
+          {% endif %}
+      
+          {% if current_variant != blank and image.variants.first.id == current_variant.id %}
+            {% continue %}
+          {% endif %}
+
+          {% assign image_count0 = image_count0 | plus: 1 %}
+
+          <li data-product-image='{{ image.variants | map: 'id' | join: ',' }}' class="{% if media.alt contains 'full-width' %}full-width{% endif %}" {{ fullScreenToggle | replace: 'indexNum', forloop.index0 }}>
+      
+            {% if media.media_type == 'image' %}
+              {% render 'picture-element', image: media, image_mobile: media, size: size, alt: alt, extra_class: 'object-fit--cover'  %}
+            {% elsif media.media_type == 'video' %}
+      
+              <div class="video-wrapper object-fit--cover">
+                <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: size }}">
+                  {% for source in media.sources %}
+                    <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+                  {% endfor %}
+                  This browser does not support the HTML5 video element.
+                </video>
+              </div>
+
+            {% endif %}
+            
+          </li>
+        {% endfor %} 
+
+        {% if current_variant.metafields.my_fields.alternative_variant_image != blank %}
+          {% assign alternative_variant_image = current_variant.metafields.my_fields.alternative_variant_image %}
+          {% assign image_count0 = image_count0 | plus: 1 %}
+          <li {{ fullScreenToggle | replace: 'indexNum', image_count0 }}>
+              {% render 'picture-element', image: alternative_variant_image, image_mobile: alternative_variant_image, size: '550x', alt: alternative_variant_image.alt, extra_class: 'object-fit--cover'  %}
+          </li>
+        {% endif %}
+
+        {% for media in current_variant.metafields.custom.extra_media.value %}
+          {% assign image_count0 = image_count0 | plus: 1 %}
+          <li {{ fullScreenToggle | replace: 'indexNum', image_count0 }}>
+          
+            {% if media.media_type == 'image' %}
+              {% render 'picture-element', image: media, image_mobile: media, size: '550x', alt: alt, extra_class: 'object-fit--cover'  %}
+            {% elsif media.media_type == 'video' %}
+          
+              <div class="video-wrapper object-fit--cover">
+                <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: size }}">
+                  {% for source in media.sources %}
+                    <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+                  {% endfor %}
+                  This browser does not support the HTML5 video element.
+                </video>
+              </div>
+
+            {% endif %}
+            
+          </li>
+        {% endfor %}
+
+      </ul>
+    </div>
+
+    <div class="tablet-images-container wrapper tablet-only">
+      <ul class="keen-slider product-images" id="mainProductSliderMobile" data-keen-slider='{
+        "arrows": false,
+        "id": "mainProductSliderMobile",
+        "loop": true,
+        "dots": false,
+        "enableWhen": "(max-width: 834px)",
+        "slidesPerView": 1,
+        "playVideos": true,
+        "drag": false
+      }' data-mobile-product-images>
+
+        {% include 'product--left-area-main-image', size: '450x', large_size: '450x', mobile: true %}
+
+        {% for media in product.media %}
+          {% assign alt = media.alt | default: product.title %}
+          {% assign image_variant_id = '' %}
+
+          {% assign image = blank %}
+          {% for image in product.images %}
+            {% if image.src == media.src %}
+              {% assign image = image %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if image.variants != blank and image.variants.first.id != current_variant.id %}
+            {% continue %}
+          {% endif %}
+          
+          {% if image.variants.first.id == current_variant.id %}
+            {% continue %}
+          {% endif %}
+
+          <li class="keen-slider__slide" data-product-image='{{ image.variants | map: 'id' | join: ',' }}' data-index="{{ forloop.index0 }}">
+
+            {% assign lazyload = true %}
+            {% if forloop.first %}
+              {% assign lazyload = false %}
+            {% endif %}
+
+            {% if media.media_type == 'image' %}
+              {% render 'picture-element', image: media, image_mobile: media, size: '200x', alt: alt, extra_class: 'object-fit--cover', lazyload: lazyload  %}
+            {% elsif media.media_type == 'video' %}
+
+              <div class="object-fit--cover">
+                <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: '450x' }}">
+                  {% for source in media.sources %}
+                    <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+                  {% endfor %}
+                  This browser does not support the HTML5 video element.
+                </video>
+              </div>
+
+            {% endif %}
+            
+          </li>
+        {% endfor %} 
+
+        {% if alternative_variant_image %}
+          <li>
+              {% render 'picture-element', image: alternative_variant_image, image_mobile: alternative_variant_image, size: '550x', alt: alternative_variant_image.alt, extra_class: 'object-fit--cover'  %}
+          </li>
+        {% endif %}
+
+        {% for media in current_variant.metafields.custom.extra_media.value %}
+          <li>
+          
+            {% if media.media_type == 'image' %}
+              {% render 'picture-element', image: media, image_mobile: media, size: '450x', alt: alt, extra_class: 'object-fit--cover'  %}
+            {% elsif media.media_type == 'video' %}
+          
+              <div class="video-wrapper object-fit--cover">
+                <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: size }}">
+                  {% for source in media.sources %}
+                    <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+                  {% endfor %}
+                  This browser does not support the HTML5 video element.
+                </video>
+              </div>
+
+            {% endif %}
+            
+          </li>
+        {% endfor %}
+      </ul>
+
+      <ul class="product-thumbnails keen-slider" 
+        data-keen-slider='{
+          "asNavFor": "mainProductSliderMobile",
+          "slidesPerView": 4,
+          "loop": {% if product.media.size > 4 %}true{% else %}false{% endif %},
+          "focusOnSelect": true,
+          "dots": false,
+          "controls": false,
+          "rubberband": false,
+          "arrows": false
+        }' data-mobile-product-thumbnail-images>
+        
+        {% assign dot_index = 0 %}
+
+        {% include 'product--left-area-main-image', size: '450x', large_size: '450x', is_dot: true %}
+
+        {% for media in product.media %}
+
+          {% if media.media_type != 'image' and media.media_type != 'video' %}
+            {% continue %}
+          {% endif %}
+
+          {% assign image = blank %}
+          {% for image in product.images %}
+            {% if image.src == media.src %}
+              {% assign image = image %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if image.variants != blank and image.variants.first.id != current_variant.id %}
+            {% continue %}
+          {% endif %}
+          
+          {% if image.variants.first.id == current_variant.id %}
+            {% continue %}
+          {% endif %}
+
+          <li data-product-image='{{ image.variants | map: 'id' | join: ',' }}' {% if media.media_type == 'video' %}class="video-thumb"{% endif %} data-dot="{{ dot_index }}">
+
+            {% assign image = media %}
+
+            {% if media.media_type == 'video' %}
+              {% assign image = media.preview_image %}
+            {% endif %}
+
+            {% render 'picture-element', image: image, size: '50x' size_mobile: '50x', alt: image.alt, extra_class: 'object-fit--cover' %}
+
+          </li>
+
+          {% assign dot_index = dot_index | plus: 1 %}
+          
+        {% endfor %}
+
+        {% if alternative_variant_image %}
+          <li>
+              {% render 'picture-element', image: alternative_variant_image, image_mobile: alternative_variant_image, size: '550x', alt: alternative_variant_image.alt, extra_class: 'object-fit--cover'  %}
+          </li>
+        {% endif %}
+
+        {% for media in current_variant.metafields.custom.extra_media.value %}
+          <li data-dot="{{ dot_index }}">
+          
+            {% if media.media_type == 'image' %}
+              {% render 'picture-element', image: media, image_mobile: media, size: '450x', alt: alt, extra_class: 'object-fit--cover'  %}
+            {% elsif media.media_type == 'video' %}
+          
+              <div class="video-wrapper object-fit--cover">
+                <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: size }}">
+                  {% for source in media.sources %}
+                    <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+                  {% endfor %}
+                  This browser does not support the HTML5 video element.
+                </video>
+              </div>
+
+            {% endif %}
+            
+          </li>
+
+          {% assign dot_index = dot_index | plus: 1 %}
+
+        {% endfor %}
+
+      </ul>  
+
+    </div>
+
+
+    {% include 'product-fullscreen-slider' %}
+
+  </div>
+
+</div>

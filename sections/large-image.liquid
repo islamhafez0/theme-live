@@ -1,0 +1,276 @@
+<div class="large-img-main-container">
+  <div class="textContainer">
+    <div class="leftText">
+      <a href="{{ section.settings.sectionUrl }}">
+        {{ section.settings.socialBannerHeading }}
+      </a>
+      <h2>{{ section.settings.followus }}</h2>
+    </div>
+    <div class="rightText">
+      {{ section.settings.socialBannerText }}
+    </div>
+  </div>
+  <div class="imgContainer">
+    <a href="{{ section.settings.sectionUrl }}">
+      <img src="{{ section.settings.socialBannerImg | img_url: "master" }}" alt="">
+    </a>
+    <h2>{{ section.settings.followus }}</h2>
+  </div>
+</div>
+<style>
+  .large-img-main-container{
+    max-width: 100%;
+    background-color: {{ section.settings.bgColor }};
+  }
+  .textContainer{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: {{ section.settings.topBottomPadding }}px {{ section.settings.rightLeftPadding }}px;
+    flex-wrap: wrap;
+  }
+  .imgContainer{
+    width: 100%;
+  }
+  .imgContainer img{
+    width: 100%;
+  }
+  .leftText a{
+    text-decoration: none;
+
+  }
+  .textContainer .leftText p{
+    color: {{ section.settings.fontColor }};
+    font-size: {{ section.settings.fontSize }}px;
+    font-weight: {{ section.settings.fontWeight }};
+    font-family: brandonGrotesque;
+    letter-spacing: .1rem;
+  }
+  .leftText h2, .imgContainer h2{
+    color: {{ section.settings.sub_fontColor }};
+    font-size: {{ section.settings.sub_fontSize }}px;
+    font-weight: {{ section.settings.sub_fontWeight }};
+    font-family: brandonGrotesque;
+    letter-spacing: .1rem;
+    margin-top: 15px;
+  }
+  .rightText p{
+    color: {{ section.settings.cont_fontColor }};
+    font-size: {{ section.settings.cont_fontSize }}px;
+    font-weight: {{ section.settings.cont_fontWeight }};
+    font-family: brandonGrotesque;
+  }
+  .imgContainer h2{
+    display:none;
+  }
+
+  @media only screen and (max-width:767px){
+    .textContainer .leftText p{
+      font-size: {{ section.settings.fontSize_mb }}px;
+    }
+    .leftText h2, .imgContainer h2{
+      font-size: {{ section.settings.sub_fontSize_mb }}px;
+      text-align: center;
+     }
+    .rightText p{
+      font-size: {{ section.settings.cont_fontSize_mb }}px;
+     }
+    .leftText, .rightText{
+      width: 100%;
+    }
+    .leftText h2{
+      display: none;
+    }
+    .rightText{
+      padding-top: 15px;
+    }
+    .imgContainer h2{
+      display:block;
+      margin-top: 0;
+      padding: 22px 0;
+    }
+    .textContainer{
+      text-align: center;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Community Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "heading Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "socialBannerHeading",
+      "label": "Social Heading"
+    },
+    {
+      "type": "color",
+      "id": "fontColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "fontSize",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "fontWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "fontSize_mb",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size Mobile",
+      "default": 16
+    },
+    {
+      "type": "text",
+      "id": "followus",
+      "label": "Sub Heading",
+      "default": "FOLLOW US"
+    },
+    {
+      "type": "color",
+      "id": "sub_fontColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "sub_fontSize",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "sub_fontWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "sub_fontSize_mb",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size Mobile",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "topBottomPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Top Bottom Text Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "rightLeftPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Left Right Text Padding",
+      "default": 40
+    },
+    {
+      "type": "url",
+      "id": "sectionUrl",
+      "label": "Button link"
+    },
+    {
+      "type": "richtext",
+      "id": "socialBannerText",
+      "label": "Text ",
+      "default": "<p> @herbalgardensskincare </p>"
+    },
+    {
+      "type": "color",
+      "id": "cont_fontColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "cont_fontSize",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "cont_fontWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "cont_fontSize_mb",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 20
+    },
+    {
+      "type": "image_picker",
+      "id": "socialBannerImg",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#e8decc"
+    }
+
+
+
+
+  ],
+  "presets": [
+    {
+      "name": "Community Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

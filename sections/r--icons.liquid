@@ -1,0 +1,129 @@
+{% assign ss = section.settings %}
+
+<div class="section-header">
+  {% if ss.subtitle != blank %}
+    <h3 class="subtitle">{{ ss.subtitle }}</h3>
+  {% endif %}
+
+  {% if ss.title != blank %}
+    <{{ ss.title_tag }} class="h2">
+      {{ ss.title | newline_to_br }}
+    </{{ ss.title_tag }}>
+  {% endif %}
+</div>
+
+<ul class="icons-list" data-keen-slider='{
+  "id": "slider{{section.id}}",
+  "slides": {
+    "perView": {{ ss.per_view }},
+    "spacing": 24
+  },
+  "arrows": true,
+  "drag": true,
+  "responsive": [
+    {
+      "breakpoint": "834px",
+      "settings": {
+        "slides": {
+          "perView": 4.3,
+          "spacing": 16
+        },
+        "arrows": false,
+        "drag": true
+      }
+    },
+    {
+      "breakpoint": "480px",
+      "settings": {
+        "slides": {
+          "perView": 2.3,
+          "spacing": 16
+        },
+        "arrows": false,
+        "drag": true
+      }
+    }
+  ]
+}'>
+
+  {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+    {% assign icon_size = 1320 | divided_by: ss.per_view %}
+
+    <li>
+
+      <{% if bs.url != blank %}a href="{{ bs.url }}"{% else %}div{% endif %} class="icons-item">
+        {{ bs.icon | image_url: width: icon_size | image_tag }}
+      </{% if bs.url != blank %}a href="{{ bs.url }}"{% else %}div{% endif %}>
+
+    </li>
+  {% endfor %}
+</ul>
+
+{% schema %}
+{
+  "name": "R - Icons",
+  "tag": "section",
+  "class": "r--icons wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "As Featured In",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    },
+    {
+      "type": "range",
+      "id": "per_view",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Icons per view (desktop)",
+      "default": 6
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Icons"
+    }
+  ]
+}
+{% endschema %}

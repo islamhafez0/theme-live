@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        }
+      },
+      "block_order": [
+        "featured_image"
+      ],
+      "settings": {}
+    },
+    "e2368009-5dab-4a26-9e8a-33eb3ce7e966": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the brand: A Q&A with the Founder",
+            "heading_size": "h1"
+          }
+        },
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Herbal Gardens are nature’s skincare specialists. We know nature like we know skin. We are a partnership, a powerful duo between nature and knowledge. An effective outcome of when nature meets beauty. <\/p><p><br\/><\/p><p>This is our mission, and we are dedicated to achieving it. <\/p><p><br\/><\/p><p>Here's a snapshot Q&A with our Founder to understand why Herbal Gardens became what it is today.<\/p>"
+          }
+        },
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-heading-1",
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-text-1",
+        "template--19912606810414__e2368009-5dab-4a26-9e8a-33eb3ce7e966-button-1"
+      ],
+      "custom_css": [],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "e7bac712-c8e7-44f4-b738-1e772621dc78": {
+      "type": "blog_Text",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 60,
+        "secRightLeftPad": 60,
+        "secBottomPad": 10,
+        "miniHeading": "66",
+        "miniText": "<p>“The need for natural and effective skincare was bigger than I had ever imagined.”<\/p>",
+        "mainHeading": "Why did you start Herbal Gardens?",
+        "mainText": "<p>I never set out to create Herbal Gardens, but the need for natural and effective skincare was bigger than I had ever imagined. After suffering, first hand in my teenage years, through to being an adult with cystic acne, I knew I had to do something. <\/p><p><br\/><\/p><p>Around the time of intense suffering and trying every product and brand in the market, I started to study Herbal Medicine. My studies introduced me to oils and understanding their key health benefits - surprised, unsure and extremely sceptical, I wasn’t in a position to pass down a trial, so I gave it a shot.<\/p><p><br\/><\/p><p>To my surprise, a few months later my skin had completely changed. The extreme difference over time, meant I was attracting a lot of common questions, we all seek today. What is your routine? How did you get your skin to clear up? What products are you using? From this Herbal Gardens was born.<\/p>"
+      }
+    },
+    "21fcfec0-6d76-47ff-a88e-b73e387171a4": {
+      "type": "blog_img_with_text",
+      "settings": {
+        "page_size": 1200,
+        "secTopPad": 10,
+        "secRightLeftPad": 60,
+        "secBottomPad": 60,
+        "imgContainer": "shopify:\/\/shop_images\/blog-2.webp",
+        "mainHeading": "What is the idea around Herbal Gardens?",
+        "hii_mainText": "<p>It’s about bringing skincare that ticks all the boxes, without being totally unattainable to those suffering; effective, clean, sustainable, luxurious, indulging, honest - everything you want from a skincare line but not something I feel is readily available.<\/p><p><br\/><\/p><p>It was at the point of seriously suffering during my own skincare journey I knew that there was something to be done in the industry for those in need of clean, effective skincare. This gave me the empowerment to set myself a mission to create clean, natural skincare and to educate the industry on the breakthrough and knowledge I have single handedly experienced.<\/p>"
+      }
+    },
+    "8944beae-9eb3-4533-a089-863dd37df43d": {
+      "type": "full-Width-Text",
+      "settings": {
+        "page_size": 2560,
+        "secTopPad": 15,
+        "secRightLeftPad": 20,
+        "secBottomPad": 15,
+        "full_width_mainText": "<p>\"We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. <\/p><p>This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use\"<\/p>",
+        "paraColor": "#000000",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "#e3ebda"
+      }
+    },
+    "37c53199-af72-411c-8cb8-02d3ce830c70": {
+      "type": "blog_img_with_text",
+      "settings": {
+        "page_size": 1200,
+        "secTopPad": 20,
+        "secRightLeftPad": 60,
+        "secBottomPad": 20,
+        "imgContainer": "shopify:\/\/shop_images\/blog-1.webp",
+        "mainHeading": "What is so unique about Herbal Gardens?",
+        "hii_mainText": "<p>We’re 100% all oil based. Scary thought, we know, but that's what we are here for. We learnt first hand that oil based products aren’t just for dry skin - they’re for all skin types. <\/p><p><br\/><\/p><p>Our products aim to deal with the root causes of beauty issues, rather than dealing with symptoms for short term relief. As our motto goes, ‘When beauty meets Nature’, we are driven to provide skincare solutions using the power of nature. Nature works via symbiotic relationships: everything is connected, everything is in balance, and every illness has a remedy. Every plant has protective qualities, ways it hydrates itself, nourishes itself, and ways it thrives. We formulate our products by studying these qualities and emulating them in our selection of active botanical ingredients and the nutrients they provide. We’ve packed over 40 of these nutrients into each of our products, to ensure you get the most out of every product. <\/p>"
+      }
+    },
+    "d03f1d26-21ec-4b65-ab42-4a4f69480e38": {
+      "type": "blog_Text",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 10,
+        "secRightLeftPad": 30,
+        "secBottomPad": 10,
+        "miniHeading": "66",
+        "miniText": "<p>\"True change comes from beneath the skins barrier, which takes time to show in the appearance.\"<\/p>",
+        "mainHeading": "What is your skincare top tip?",
+        "mainText": "<p>GIVE YOUR SKIN A CHANCE TO GET USED TO A NEW PRODUCT<\/p><p><br\/><\/p><p>You must always give your skin a chance to get used to any product. Switching skincare can be daunting but sometimes your skin suffers due to excessive use of products that just aren’t right for your skin, and more often than not, people want to see results instantly. True change comes from beneath the skins barrier, which takes time to show in the appearance. This is why we always recommend sticking to new products for at least 3 weeks to see if they are right for you.<\/p>"
+      }
+    },
+    "961c2200-00b5-4f9e-9910-c64cb012d618": {
+      "type": "blog_Text",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 10,
+        "secRightLeftPad": 30,
+        "secBottomPad": 10,
+        "miniHeading": "66",
+        "miniText": "<p>\"We ensure our products are safe for all types, tones and textures of skin and hair.\"<\/p>",
+        "mainHeading": "What are you most proud of?",
+        "mainText": "<p>That’s an easy one, we formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use. We think everybody deserves to feel proud and confident of their skin, so we ensure our products are safe for all types, tones and textures of skin and hair.<\/p><p><br\/><\/p><p>We have a range of products for different skin types, which contain different combinations of ingredients to help that specific skin type. We don’t outsource production, which is common in the beauty industry, so that we can be sure to avoid toxic fillers or low and ineffective amounts of active ingredients. <\/p>"
+      }
+    },
+    "823434ef-4bc1-4264-bb66-4687347aa078": {
+      "type": "custom-collections-block",
+      "blocks": {
+        "98a48559-989f-4cdf-9d3b-d805be4eefc4": {
+          "type": "block",
+          "settings": {
+            "collection": "behind-the-brand",
+            "blockLink": ""
+          }
+        },
+        "b69767c7-c2df-42cf-ae70-ef472f446744": {
+          "type": "block",
+          "settings": {
+            "collection": "all-skin-types-are-beautiful",
+            "blockLink": "https:\/\/herbal-gardens-uk.myshopify.com\/pages\/blog"
+          }
+        },
+        "c6cdd81a-fe83-428e-a936-0ff93ff16e7a": {
+          "type": "block",
+          "settings": {
+            "collection": "how-to-keep-your-skin-happy",
+            "blockLink": "https:\/\/herbal-gardens-uk.myshopify.com\/blogs\/guide\/a-guide-to-happy-healthy-skin"
+          }
+        }
+      },
+      "block_order": [
+        "98a48559-989f-4cdf-9d3b-d805be4eefc4",
+        "b69767c7-c2df-42cf-ae70-ef472f446744",
+        "c6cdd81a-fe83-428e-a936-0ff93ff16e7a"
+      ],
+      "settings": {
+        "padding_top": 45,
+        "padding_bottom": 86,
+        "padding_left": 70,
+        "padding_right": 70,
+        "padding_top_mb": 45,
+        "padding_bottom_mb": 86,
+        "padding_left_mb": 70,
+        "padding_right_mb": 70,
+        "title_text_fz": 16,
+        "title_text_fw": 500,
+        "title_text_fc": "#121212",
+        "title_text_fz_mb": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e2368009-5dab-4a26-9e8a-33eb3ce7e966",
+    "e7bac712-c8e7-44f4-b738-1e772621dc78",
+    "21fcfec0-6d76-47ff-a88e-b73e387171a4",
+    "8944beae-9eb3-4533-a089-863dd37df43d",
+    "37c53199-af72-411c-8cb8-02d3ce830c70",
+    "d03f1d26-21ec-4b65-ab42-4a4f69480e38",
+    "961c2200-00b5-4f9e-9910-c64cb012d618",
+    "823434ef-4bc1-4264-bb66-4687347aa078"
+  ]
+}

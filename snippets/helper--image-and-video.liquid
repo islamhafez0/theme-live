@@ -1,0 +1,101 @@
+{% unless image %}
+    {% assign image = bs.image %}
+{% endunless %}
+
+{% unless image_mobile %}
+    {% assign image_mobile = bs.image_mobile %}
+{% endunless %}
+
+{% assign image_class_copy = image_class %}
+
+{% if bs.video != blank %}
+    
+    <div class="video-container {% if bs.video_mobile != blank or image_mobile != blank %}desktop-only{% endif %} {{ video_class }}" {% if show_video_trigger %}data-video{% endif %}>
+        <video 
+            data-video-elem
+            data-lazy
+            {% if image != blank %}data-poster="{{ image | img_url: image_size }}"{% endif %}
+            loop
+            playsinline
+            {% if show_video_trigger == blank %}
+                muted
+                autoplay
+            {% endif %}>
+            {% for source in bs.video.sources %}
+              <source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+            {% endfor %}
+        </video>
+
+        {% if show_video_trigger %}
+            <div data-video-trigger class="video-trigger-area flex f-j-center f-a-center">
+              <button class="flex f-a-center f-j-center">
+                {% include 'icon-video-play' %}
+              </button>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if bs.video_mobile != blank %}
+        <div class="video-container tablet-only {{ video_class }}" {% if show_video_trigger %}data-video{% endif %}>
+            <video 
+                data-video-elem
+                data-lazy
+                {% if image != blank %}data-poster="{{ image_mobile | default: image | img_url: '500x' }}"{% endif %}
+                loop
+                playsinline
+                {% if show_video_trigger == blank %}
+                    muted
+                    autoplay
+                {% endif %}
+                >
+                {% for source in bs.video_mobile.sources %}
+                  <source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+                {% endfor %}
+            </video>
+
+            {% if show_video_trigger %}
+                <div data-video-trigger class="video-trigger-area flex f-j-center f-a-center">
+                  <button class="flex f-a-center f-j-center">
+                    {% include 'icon-video-play' %}
+                  </button>
+                </div>
+            {% endif %}
+
+        </div>
+    {% elsif image_mobile != blank %}
+        {% assign image_class_copy = image_class_copy | append: ' tablet-only' %}
+        {% render 'picture-element', image: image, image_mobile: image_mobile, hover_image: bs.hover_image, size: image_size, extra_class: image_class_copy  %}
+    {% endif %}
+
+{% else %}
+    
+
+    {% if bs.video_mobile != blank %}
+        {% assign image_class_copy = image_class_copy | append: ' desktop-only' %}
+
+        <div class="video-container tablet-only {{ video_class }}">
+            <video 
+                data-lazy
+                {% if image != blank %}data-poster="{{ image_mobile | default: image | img_url: '500x' }}"{% endif %}
+                muted
+                loop
+                playsinline
+                autoplay>
+                {% for source in bs.video_mobile.sources %}
+                  <source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+                {% endfor %}
+            </video>
+        </div>
+
+    {% endif %}
+
+    {% render 'picture-element', image: image, image_mobile: image_mobile, size: image_size, extra_class: image_class_copy  %}
+    {% if bs.image_hover != blank %}
+        {% assign hover_image =  bs.image_hover %}
+         {% render 'picture-element', image: hover_image, image_mobile: image_mobile, size: image_size, alt: hover_image.alt, extra_class: 'hover-image desktop-only object-fit--cover', manual_lazy_load: true %}
+    {% endif %}
+   
+{% endif %}
+
+{% assign image = false %}
+{% assign image_mobile = false %}

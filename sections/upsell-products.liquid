@@ -1,0 +1,91 @@
+{% assign ss = section.settings %}
+
+<div class="upsell-products">
+  <div class="wrapper" data-recommended-products='{
+    "baseUrl": {{ routes.product_recommendations_url | json }},
+    "productId": {{ product.id | json }},
+    "limit": {{ ss.product_limit | json }},
+    "compToMount": "slider{{ section.id }}",
+    "intent": {{ ss.intent | json }}
+  }'>
+
+    <div class="section-header">
+      {% if ss.subtitle != blank %}
+        <h3 class="subtitle">{{ ss.subtitle }}</h3>
+      {% endif %}
+
+      {% if ss.title != blank %}
+        <{{ ss.title_tag }} class="h2">
+          {{ ss.title | newline_to_br }}
+        </{{ ss.title_tag }}>
+      {% endif %}
+    </div>
+
+    <ul class="upsell-products-slider product-grid flex f-j-center" data-recommended-products-container data-keen-slider='{
+      "mount": false,
+      "id": "slider{{section.id}}",
+      "enableWhen": "(max-width: 834px)",
+      "slidesPerView": 1,
+      "spacing": 16,
+      "arrows": true,
+      "loop": true
+    }'></ul>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Upsell products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Take Your Pick",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "You may also like",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    },
+    {
+      "type": "select",
+      "id": "intent",
+      "default": "related",
+      "options": [
+        { "value": "complementary", "label": "Complementary"},
+        { "value": "related", "label": "Related"}
+      ],
+      "label": "Automatic Shopify Reccomendations Type"
+    },
+    {
+      "type":"number",
+      "id":"product_limit",
+      "label":"Product Limit",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upsell products"
+    }
+  ]
+}
+{% endschema %}

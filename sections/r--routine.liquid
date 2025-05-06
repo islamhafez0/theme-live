@@ -1,0 +1,233 @@
+{% assign ss = section.settings %}
+
+{% assign slide_count = 0 %}
+
+{% for block in section.blocks %}
+  {% assign bs = block.settings %}
+
+  {% if bs.product != blank  %}
+    {% assign slide_count = slide_count | plus: 1  %}
+  {% endif %}
+{% endfor %}
+
+<div class="main-flex flex f-a-center">
+
+  <div class="section-header desktop-only">
+    {% if ss.subtitle != blank %}
+      <h3 class="subtitle">{{ ss.subtitle }}</h3>
+    {% endif %}
+
+    {% if ss.title != blank %}
+      <{{ ss.title_tag }} class="h2">
+        {{ ss.title | newline_to_br }}
+      </{{ ss.title_tag }}>
+    {% endif %}
+
+    {% if ss.content != blank %}
+      <div class="rte">
+        {{ ss.content }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="products-box">
+
+    <div class="section-header">
+      {% if ss.products_subtitle != blank %}
+        <h3 class="subtitle">{{ ss.products_subtitle }}</h3>
+      {% endif %}
+
+      {% if ss.products_title != blank %}
+        <{{ ss.title_tag }} class="h2">
+          {{ ss.products_title | newline_to_br }}
+        </{{ ss.title_tag }}>
+      {% endif %}
+    </div>
+
+    <ul class="products-list flex" data-keen-slider='{
+      "id": "slider{{section.id}}",
+      "slides": {
+        "perView": "auto"
+      },
+      "arrows": {% if slide_count > 3 %}true{% else %}false{% endif %},
+      "drag": {% if slide_count > 3 %}true{% else %}false{% endif %},
+      "loop": false,
+      "responsive": [
+        {
+          "breakpoint": "1024px",
+          "settings": {
+            "slides": {
+              "perView": 4,
+              "spacing": 16
+            },
+            "loop": true,
+            "drag": true
+          }
+        },
+        {
+          "breakpoint": "834px",
+          "settings": {
+            "slides": {
+              "perView": 4,
+              "spacing": 8
+            },
+            "loop": true,
+            "arrows": false,
+            "drag": true
+          }
+        },
+        {
+          "breakpoint": "480px",
+          "settings": {
+            "slides": {
+              "perView": 2.2,
+              "spacing": 8,
+              "origin": "center"
+            },
+            "loop": true,
+            "arrows": false,
+            "drag": true
+          }
+        }
+      ]
+    }'>
+      {% for block in section.blocks %}
+        {% assign bs = block.settings %}
+
+        {% assign the_product = all_products[bs.product] %}
+
+        <li>
+
+          <div class="product-grid-item-secondary product-grid-item--{{ the_product.id }}-{{ forloop.index }} {{ extra_class }} product-item--{{ the_product.id }}-{{ forloop.index }}">
+
+            <div class="product-image-area">
+              <a href="{{ the_product.url }}" data-product-url aria-label="{{ the_product.title }}">
+                {% unless img_size %}
+                  {% assign img_size = '316x' %}
+                {% endunless %}
+
+                {% assign image = the_product.featured_image %}
+
+                {% render 'picture-element', image: image, image_mobile: blank, size: img_size, alt: the_product.title, show_placeholder: true, extra_class: 'object-fit--cover' %}
+
+                {% if the_product.images.size > 1 %}
+                  {% render 'picture-element', image: the_product.images[1], image_mobile: '1px', size: img_size, alt: the_product.title, extra_class: 'hover-image desktop-only object-fit--cover', manual_lazy_load: true %}
+                {% endif %}
+              </a>
+
+              {% include 'product--badges' %}
+            </div>
+
+            <div class="product-info-area">
+
+              {% if the_product.vendor != blank %}
+                <div class="product-vendor">
+                  {{ the_product.vendor }}
+                </div>
+              {% endif %}
+              <a href="{{ the_product.url }}" data-product-url class="h6 product-title">{{ the_product.title }}</a>
+              <p class="product-prices">
+                {% assign current_variant = the_product.selected_or_first_available_variant %}
+
+                <span class="money product-price {% if current_variant.compare_at_price > current_variant.price %}on-sale{% endif %}">
+                  {{ current_variant.price | money_without_trailing_zeros }}
+                </span>
+                <span data-compare-price class="money compare-at-price {% unless current_variant.compare_at_price > current_variant.price %}hide{% endunless %}">
+                  {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+                </span>
+              </p>
+
+            </div>
+
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
+
+{% if slide_count == 0 %}
+  <script>
+    document.querySelector("#shopify-section-{{ section.id }}").remove()
+  </script>
+  <style>
+    #shopify-section-{{ section.id }} {
+      display: none !important;
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "R - Routine",
+  "tag": "section",
+  "class": "r--routine wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "How To Use",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "Always cleanse hands and face before application for maximum absorption and nourishment.",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "default": "<p>After cleansing, add a few drops into the palm of your hand or drip directly onto face, then massage into face, neck and hands using circular upward motions.</p>",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    },
+    {
+      "type": "text",
+      "id": "products_subtitle",
+      "default": "For Maximum Benefit",
+      "label": "Products subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "products_title",
+      "default": "Use in combination with",
+      "label": "Products Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Routine"
+    }
+  ]
+}
+{% endschema %}

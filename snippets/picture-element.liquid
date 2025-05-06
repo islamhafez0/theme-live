@@ -1,0 +1,127 @@
+{% assign size_mobile = size | default: '834x' %}
+
+{% assign image_url = image | img_url: size %}
+{% assign image_retina_url = image | img_url: size, scale: 2 %}
+
+{% assign image_tablet_url = image_mobile | default: image | img_url: size_mobile %}
+{% assign image_mobile_url = image_mobile | default: image | img_url: '480x' %}
+
+{% assign image_retina_tablet_url = image_mobile | default: image | img_url: size_mobile, scale: 2 %}
+{% assign image_retina_mobile_url = image_mobile | default: image | img_url: '480x', scale: 2 %}
+
+{% assign placeholder_url = image | img_url: '1x1' %}
+
+{% if type == 'file_url' %}
+  {% assign image_name = image | split: '/' | last %}
+  {% assign image_url = image_name | file_img_url: size %}
+  {% assign image_retina_url = image_name | file_img_url: size, scale: 2 %}
+
+  {% assign image_tablet_url = image_mobile | default: image_name | file_img_url: '834x' %}
+  {% assign image_mobile_url = image_mobile | default: image_name | file_img_url: '480x' %}
+
+  {% assign image_retina_tablet_url = image_mobile | default: image_name | file_img_url: '834x', scale: 2 %}
+  {% assign image_retina_mobile_url = image_mobile | default: image_name | file_img_url: '480x', scale: 2 %}
+
+  {% assign placeholder_url = image_name | file_img_url: '1x1' %}
+{% endif %}
+
+{% if image_mobile == blank %}
+  {% assign image_mobile = image %}
+  {% assign image_tablet = image %}
+{% endif %}
+
+{% assign alt = alt | default: image.alt %}
+
+{% if lazyload == false %}
+  <div
+    class="picture-element-wrapper wrapper--{{ image.id }} {% if extra_class != blank %}{{ extra_class }}{% endif %}"
+    {% if image.aspect_ratio != blank or image_mobile.aspect_ratio != blank %}
+      style="--aspect-desktop: {{ 100.0 | divided_by: image.aspect_ratio }}%; --aspect-tablet: {{ 100.0 | divided_by: image_mobile.aspect_ratio }}%;"
+    {% endif %}
+    {% if extra_attr != blank %}
+      {{- extra_attr -}}
+    {% endif %}
+    {% if manual_lazy_load %}
+      data-lazy-load-trigger='
+        {
+          "target": "this",
+          "subTarget": "[data-lazy-manual]",
+          "on": "mouseover"
+        }
+      '
+    {% endif %}
+  >
+    {% comment %} <picture>
+      {% if image_mobile == '1px' %}
+        <source media="(max-width: 834px)" data-srcset="about:blank">
+      {% elsif image == '1px' %}
+        {% assign image_url = image_mobile | img_url: '834x' %}
+        <source media="(min-width: 835px)" data-srcset="about:blank">
+      {% else %}
+        <source media="(max-width: 480px)" data-srcset="{{ image_mobile_url }} 1x, {{ image_retina_mobile_url }} 2x">
+        {% unless only_desktop_and_mobile %}
+          <source media="(max-width: 834px)" data-srcset="{{ image_tablet_url }} 1x, {{ image_retina_tablet_url }} 2x">
+        {% endunless %}
+      {% endif %} {% endcomment %}
+      <img
+        draggable="false"
+        srcset="{{ image_url }} 1x, {{ image_retina_url }} 2x"
+        loading="eager"
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        alt="{{ alt | strip_html }}"
+        src="{{ image_url }}"
+        class="picture-element-image"
+        style="{% if image.presentation.focal_point != blank %}--focal-desktop: {{ image.presentation.focal_point }};{% endif %} {% if image_tablet.presentation.focal_point != blank %}--focal-tablet: {{ image_tablet.presentation.focal_point }};{% endif %}"
+      >
+    {% comment %} </picture> {% endcomment %}
+  </div>
+
+{% else %}
+  <div
+    class="picture-element-wrapper wrapper--{{ image.id }} {% if extra_class != blank %}{{ extra_class }}{% endif %}"
+    {% if image.aspect_ratio != blank or image_mobile.aspect_ratio != blank %}
+      style="--aspect-desktop: {{ 100.0 | divided_by: image.aspect_ratio }}%; --aspect-tablet: {{ 100.0 | divided_by: image_mobile.aspect_ratio }}%;"
+    {% endif %}
+    {% if extra_attr != blank %}
+      {{- extra_attr -}}
+    {% endif %}
+    {% if manual_lazy_load %}
+      data-lazy-load-trigger='
+        {
+          "target": "this",
+          "subTarget": "[data-lazy-manual]",
+          "on": "mouseover"
+        }
+      '
+    {% endif %}
+  >
+    <picture>
+      {% if image_mobile == '1px' %}
+        <source media="(max-width: 834px)" data-srcset="about:blank">
+      {% elsif image == '1px' %}
+        {% assign image_url = image_mobile | img_url: '834x' %}
+        <source media="(min-width: 835px)" data-srcset="about:blank">
+      {% else %}
+        <source media="(max-width: 480px)" data-srcset="{{ image_mobile_url }} 1x, {{ image_retina_mobile_url }} 2x">
+        {% unless only_desktop_and_mobile %}
+          <source media="(max-width: 834px)" data-srcset="{{ image_tablet_url }} 1x, {{ image_retina_tablet_url }} 2x">
+        {% endunless %}
+      {% endif %}
+      <img
+        draggable="false"
+        data-srcset="{{ image_url }} 1x, {{ image_retina_url }} 2x"
+        alt="{{ alt | strip_html }}"
+        {% if manual_lazy_load %}
+          data-lazy-manual
+        {% else %}
+          data-lazy
+        {% endif %}
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        class="picture-element-image"
+        style="{% if image.presentation.focal_point != blank %}--focal-desktop: {{ image.presentation.focal_point }};{% endif %} {% if image_tablet.presentation.focal_point != blank %}--focal-tablet: {{ image_tablet.presentation.focal_point }};{% endif %}"
+      >
+    </picture>
+  </div>
+{% endif %}

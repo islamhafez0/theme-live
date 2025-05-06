@@ -1,0 +1,138 @@
+<div class="custom_banner">
+  <div class="custom_banner_main">
+    <a href="{{ section.settings.btn_link }}" aria-label="{{ section.settings.heading }}">
+      <img src='{{ section.settings.back_image | img_url: 'grande' }}' class="img-hidden hide"  aria-hidden="true" role="presentation">
+      <div class="custom_banner_contain">
+        <div class="custom_banner_heading">
+          <h1>{{ section.settings.heading }}</h1>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+
+  .img-hidden{
+    display: none;
+    visibility: hidden;
+  }
+
+  .custom_banner{
+    width: 100%;
+  }
+  .custom_banner_contain{
+    background-image: url('{{ section.settings.back_image | img_url: 'grande' }}');
+    /* height: 600px; */
+    padding-bottom: calc(100% / (1920/ 800));
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    /*     display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center; */
+    position: relative;
+  }
+  .custom_banner_heading h1 p strong{
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 90px;
+    font-weight: 400;
+    color: #fff;
+  }
+  .custom_banner_heading h1 p{
+    font-size: 70px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    width: 350px;
+  }
+  .custom_banner_heading{
+    position: absolute;
+    top: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .custom_banner_contain a{
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    bottom: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media only screen and (max-width:600px){
+    .custom_banner_contain{
+      {% if section.settings.showAnotherImageForMobile %}
+      background-image: url('{{ section.settings.back_image_mb | img_url: 'master' }}');
+      padding-bottom: calc(100% / (750/ 800));
+      {% endif %}}
+    }
+    .custom_banner_heading h1 p {
+      font-size: 30px;
+    }
+    .custom_banner_heading h1 p strong {
+      font-size: 40px;
+    }
+    .custom_banner_contain a {
+      font-size: 26px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "back_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "showAnotherImageForMobile",
+      "label": "Show Another Image For Mobile",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "back_image_mb",
+      "label": "Background Image On Mobile"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "If you want to change Font, Wrapping Word Into Bold"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Banner link"
+    }
+
+  ],
+  "presets": [
+  {
+    "name": "CQ Banner"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

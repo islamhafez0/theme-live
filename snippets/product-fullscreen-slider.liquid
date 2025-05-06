@@ -1,0 +1,211 @@
+<div class="fullscreen-slider" data-class-change='
+[
+  {
+    "target": ".fullscreen-slider",
+    "class": "shown",
+    "method": "remove",
+    "on": "click",
+    "onlyThisElem": true
+  },
+  {
+    "target": ".product-image-area-{{ product.id }}",
+    "class": "fullscreen-shown",
+    "method": "remove",
+    "on": "click",
+    "onlyThisElem": true
+  },
+  {
+    "target": ".fullscreen-slider",
+    "class": "shown",
+    "method": "remove",
+    "on": "keydown",
+    "keyCode": 27
+  }
+]
+'
+
+data-method-call='[
+  {
+    "componentId": "fullscreenSlider",
+    "on": "click",
+    "onlyThisElem": true,
+    "method": "_pauseVideos",
+    "args": []
+  },
+  {
+    "componentId": "fullscreenSlider",
+    "on": "keydown",
+    "keyCode": 27,
+    "method": "_pauseVideos",
+    "args": []
+  }
+]'
+
+>
+
+<button data-class-change='
+  [
+    {
+      "target": ".fullscreen-slider",
+      "class": "shown",
+      "method": "remove",
+      "on": "click"
+    },
+    {
+      "target": ".product-image-area-{{ product.id }}",
+      "class": "fullscreen-shown",
+      "method": "remove",
+      "on": "click"
+    }
+  ]
+  '  
+
+  data-method-call='[
+    {
+      "componentId": "fullscreenSlider",
+      "on": "click",
+      "method": "_pauseVideos",
+      "args": []
+    }
+  ]'
+
+  class="close"
+>
+  {%- render 'icon-close' -%}
+</button>
+
+<ul class="keen-slider" data-keen-slider='{
+  "slidesPerView": 1,
+  "dots": false,
+  "arrows": true,
+  "id": "fullscreenSlider",
+  "controls": false,
+  "loop": true,
+  "duration": 0,
+  "arrowKeyNavigation": true,
+  "playVideos": true,
+  "responsive": [
+    {
+      "breakpoint": "834px",
+      "settings": {
+        "slidesPerView": 1,
+        "controls": true,
+        "duration": 250,
+        "dragSpeed": 0
+      }
+    }
+  ]
+}'>
+
+  {% for media in product.media %}
+    {% assign alt = media.alt | default: product.title %}
+    <li class="keen-slider__slide media-type--{{ media.media_type }}">
+
+      {% if media.media_type == 'image' %}
+      {% assign image = media %}
+
+      <div class="image-slider-zoom"  data-image-zoom 
+      data-zoom="
+      {{ image | img_url: '2000x' }}
+      "  
+      data-class-change='
+        [
+          {
+            "target": ".image-zoom-pane",
+            "class": "shown",
+            "method": "toggle",
+            "on": "click"
+          },
+          {
+            "target": ".original",
+            "class": "zoom-out",
+            "method": "toggle",
+            "on": "click"
+          }
+
+        ]'>
+        <img data-lazy data-src="{{ image | img_url: '600x' }}" data-srcset="{{ image | img_url: '400x' }} 400w, {{ image | img_url: '600x' }} 1x, {{ image | img_url: '600x', scale: 2 }} 2x" alt="{{ image.alt | default: product.title }}">
+        <div class="image-zoom-pane" data-zoom-pane></div>
+      </div>
+
+      {% elsif media.media_type == 'video' %}
+
+        <video controls loop playsinline -webkit-playsinline placeholder="{{ media.preview_image | img_url: '800x' }}">
+          {% for source in media.sources %}
+            <source src="{{ source.url }}" type="video/{{ source.format }}">
+          {% endfor %}
+          This browser does not support the HTML5 video element.
+        </video>
+
+      {% endif %}
+
+    </li>
+  {% endfor %}
+
+  {% if current_variant.metafields.my_fields.alternative_variant_image != blank %}
+    {% assign alternative_variant_image = current_variant.metafields.my_fields.alternative_variant_image %}
+    <li class="keen-slider__slide media-type--image">
+
+      <div class="image-slider-zoom"  data-image-zoom 
+      data-zoom="
+      {{ alternative_variant_image | img_url: '2000x' }}
+      "  
+      data-class-change='
+        [
+          {
+            "target": ".image-zoom-pane",
+            "class": "shown",
+            "method": "toggle",
+            "on": "click"
+          },
+          {
+            "target": ".original",
+            "class": "zoom-out",
+            "method": "toggle",
+            "on": "click"
+          }
+
+        ]'>
+          <img data-lazy data-src="{{ alternative_variant_image | img_url: '600x' }}" data-srcset="{{ alternative_variant_image | img_url: '400x' }} 400w, {{ alternative_variant_image | img_url: '600x' }} 1x, {{ alternative_variant_image | img_url: '600x', scale: 2 }} 2x" alt="{{ alternative_variant_image.alt | default: product.title }}">
+        <div class="image-zoom-pane" data-zoom-pane></div>
+      </div>
+
+    </li>
+  {% endif %}
+
+  {% for media in current_variant.metafields.custom.extra_media.value %}
+    {% assign image = media %}
+    <li class="keen-slider__slide media-type--image">
+
+      <div class="image-slider-zoom"  data-image-zoom 
+      data-zoom="
+      {{ image | img_url: '2000x' }}
+      "  
+      data-class-change='
+        [
+          {
+            "target": ".image-zoom-pane",
+            "class": "shown",
+            "method": "toggle",
+            "on": "click"
+          },
+          {
+            "target": ".original",
+            "class": "zoom-out",
+            "method": "toggle",
+            "on": "click"
+          }
+
+        ]'>
+          <img data-lazy data-src="{{ image | img_url: '600x' }}" data-srcset="{{ image | img_url: '400x' }} 400w, {{ image | img_url: '600x' }} 1x, {{ image | img_url: '600x', scale: 2 }} 2x" alt="{{ image.alt | default: product.title }}" data-image-zoom='{
+              "enableWhen": "(max-width: 834px)",
+              "type": "mobile"
+            }'>
+        <div class="image-zoom-pane" data-zoom-pane></div>
+      </div>
+
+    </li>
+  {% endfor %}
+</ul>
+
+</div>

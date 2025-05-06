@@ -1,0 +1,22 @@
+<div class="product-sticky-atc flex f-a-center f-j-between desktop-only" data-product='{
+  "historyState": false,
+  "has_swatch_and_colour": {{ product_has_swatch_and_colour | json }},
+  "options_with_values": {{ product.options_with_values | json }}
+}' data-sticky-atc='{
+  "mainATCSelector": "[data-main-atc-area] [data-submit-main]"
+}'>
+  
+  <h4>{{ product.title }}</h4>
+
+  <div class="atc-area">
+    <button data-submit data-submit-main class="btn" type="submit" {% if sold_out %}disabled{% endif %}>
+      
+      {% if sold_out %}
+        {{ 'products.product.sold_out' | t }}
+      {% else %}
+        {{ 'products.product.add_to_cart' | t }}
+      {% endif %}
+
+    </button>
+  </div>
+</div>

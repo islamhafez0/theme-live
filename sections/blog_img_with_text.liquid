@@ -1,0 +1,99 @@
+<div class="hii_mainContainer">
+  <div class="hii_subContainer">
+    <div class="hii_blogTextContainer">
+      <div class="hii_mainText">
+        <h1>{{ section.settings.mainHeading }}</h1>
+        <div class="imageContainer"><img src="{{ section.settings.imgContainer | img_url: 'master' }}"></div>
+        <div class="miniPara">{{ section.settings.hii_mainText }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .hii_mainContainer{
+    max-width: {{ section.settings.page_size }}px;
+    margin: 0 auto;
+  }
+  .hii_subContainer{
+     padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+  }
+  .imageContainer img{
+    width: 100%;
+  }
+  .hii_blogTextContainer{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px 40px;
+    flex-wrap: nowrap;
+  }
+</style>
+{% schema %}
+{
+  "name": "Heading Image and Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+      {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "image_picker",
+      "id": "imgContainer",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "mainHeading",
+      "label": "Mini Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "hii_mainText",
+      "label": "Mini Text"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Heading Image and Text"
+    }
+  ]
+}
+{% endschema %}

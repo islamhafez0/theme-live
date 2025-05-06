@@ -1,0 +1,250 @@
+
+<div class="custom_parallex_images">
+  <div class="custom_parallex_images_contain">
+    <div class="collection_box_parallex">
+      {% for block in section.blocks %}
+        {% if block.settings.collection != blank %}
+          <a href="{{ block.settings.collection.url }}">
+            <div class="parallex_collection_box">
+              <div
+                class="parallex_background_img_and_text"
+                style="background-image: url('{{ block.settings.collection.featured_image | img_url: 'master' }}')"
+              >
+                {% if block.settings.title_show %}
+                  <h2>{{ block.settings.collection.title }}</h2>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="custom_parallex_images_main">
+      <div class="parallax">
+        <div class="parallex_text_contain">
+          {{ section.settings.para }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+      .parallex_background_img_and_text{
+           padding-bottom: calc(100% / (1200/ 1200));
+           position: relative;
+        }
+       @supports (-webkit-touch-callout: none) {
+          .parallax{
+            background-attachment: unset !important;
+          }
+       }
+      @supports not (-webkit-touch-callout: none) {
+        .parallax {
+          background-attachment: fixed !important;
+        }
+      }
+     .parallax {
+        background: url("{{ section.settings.parallex_image | img_url: 'master' }}");
+        min-height: 500px;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        padding:50px;
+        display: flex !important;
+        height: 620px;
+        align-items: center;
+        justify-content: center;
+      }
+      .parallex_text_contain p{
+        font-family: BrandonGrotesque;
+        font-size: {{ section.settings.parallex_text_fz }}px;
+        font-weight: {{ section.settings.parallex_text_fw }};
+        color: {{ section.settings.parallex_text_fc }};
+        text-align: center;
+        line-height: 1.8em;
+        letter-spacing: .6px!important;
+      }
+      .collection_box_parallex{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .collection_box_parallex a{
+        width: 33.3333333%;
+        text-decoration: underline;
+        color: #fff;
+      }
+      .parallex_collection_box{
+        width: 100%;
+        height: 100%;
+      }
+      .parallex_background_img_and_text{
+        width: 100%;
+        height: 100%;
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .parallex_background_img_and_text h2{
+        color: {{ section.settings.title_text_fc }};
+        font-size: {{ section.settings.title_text_fz }}px;
+        font-weight: {{ section.settings.title_text_fw }};
+        margin-bottom: 14%;
+      }
+     @media screen and (max-width: 1200px) {
+          .parallex_text_contain p {
+        font-size: 15px;
+    }
+     }
+      @media only screen and (max-width:767px){
+        .parallex_text_contain p{
+          font-size: {{ section.settings.parallex_text_fz_mb }}px;
+        }
+        .collection_box_parallex{
+          flex-direction: column;
+        }
+        .collection_box_parallex a{
+          width: 100%;
+
+        }
+        .parallex_background_img_and_text h2{
+          font-size: {{ section.settings.title_text_fz_mb }}px;
+        }
+        .parallax {
+      padding: 50px 40px;
+  }
+      }
+</style>
+{% schema %}
+{
+  "name": "Collection Parallex Image",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "para",
+      "label": "Paragraph"
+    },
+    {
+      "type": "image_picker",
+      "id": "parallex_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "parallex_text_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Parallex Font size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "parallex_text_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Parallex Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "parallex_text_fc",
+      "label": "Parallex Font",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "parallex_text_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Parallex Font size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "title_text_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Collection Title Font size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_text_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Collection Title Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "title_text_fc",
+      "label": "Collection Title Font",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_text_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Collection Title Font size",
+      "default": 18
+    }
+
+
+
+
+  ],
+  "blocks":[
+  {
+        "name": "Collection",
+      "type": "block",
+      "settings":[
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "title_show",
+          "label": "Show Title",
+          "default": false
+        }
+
+
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "CQ Parallex Images"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

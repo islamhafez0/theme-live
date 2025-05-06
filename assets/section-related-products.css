@@ -1,0 +1,23 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .layout-mobile--slider {
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+
+  .layout-mobile--slider .grid__item {
+    scroll-snap-align: start;
+    flex: none;
+    width: 100%;
+    max-width: initial;
+  }
+}

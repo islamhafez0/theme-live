@@ -1,0 +1,161 @@
+{% assign ss = section.settings %}
+{% assign meta_obj = product.metafields.custom %}
+
+{% assign slide_count = 0 %}
+
+{% if meta_obj.bundle_contents.value != blank %}
+  {% for product in meta_obj.bundle_contents.value %}
+    {% assign slide_count = slide_count | plus: 1  %}
+  {% endfor %}
+{% endif %}
+
+<div class="r--bundle-contents" style="
+  --color-background: {{ ss.color_bg }};
+  --color-text: {{ ss.color_text }};
+">
+  <div class="wrapper">
+    
+    <div class="section-header">
+      {% if ss.subtitle != blank %}
+        <h3 class="subtitle">{{ ss.subtitle }}</h3>
+      {% endif %}
+      
+      {% if ss.title != blank %}
+        <{{ ss.title_tag }} class="h2">
+          {{ ss.title | newline_to_br }}
+        </{{ ss.title_tag }}>
+      {% endif %}
+
+      {% if ss.content != blank %}
+        <div class="rte">
+          {{ ss.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    <ul class="bundle-contents-list {% if slide_count < 7 %}centered{% endif %} flex f-j-center" data-keen-slider='{
+      "id": "slider{{section.id}}",
+      "slides": {
+        "perView": 6,
+        "spacing": {% if slide_count > 6 %}16{% else %}0{% endif %}
+      },
+      "arrows": {% if slide_count > 6 %}true{% else %}false{% endif %},
+      "drag": {% if slide_count > 6 %}true{% else %}false{% endif %},
+      "loop": true,
+      "responsive": [
+        {
+          "breakpoint": "1024px",
+          "settings": {
+            "slides": {
+              "perView": 4,
+              "spacing": 16
+            },
+            "drag": true
+          }
+        },
+        {
+          "breakpoint": "834px",
+          "settings": {
+            "slides": {
+              "perView": 4,
+              "spacing": 8
+            },
+            "arrows": false,
+            "drag": true
+          }
+        },
+        {
+          "breakpoint": "480px",
+          "settings": {
+            "slides": {
+              "perView": 2.2,
+              "spacing": 8,
+              "origin": "center"
+            },
+            "arrows": false,
+            "drag": true
+          }
+        }
+      ]
+    }'>
+      {% for product in meta_obj.bundle_contents.value %}
+        <li class="grid__item">
+          {% include 'product-grid-item--no-price' %}
+        </li>
+      {% endfor %}  
+    </ul>
+  
+  </div>
+</div>
+
+{% if slide_count == 0 %}
+  <script>
+    document.querySelector("#shopify-section-{{ section.id }}").remove()
+  </script>
+  <style>
+    #shopify-section-{{ section.id }} {
+      display: none !important;
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "R - Bundle contents",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "What’s Included?",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "This set contains",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background colour",
+      "default": "#f2f6fb"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text colour",
+      "default": "#121212"
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Bundle contents"
+    }
+  ]
+}
+{% endschema %}

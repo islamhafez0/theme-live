@@ -1,0 +1,33 @@
+<div class="product-grid-item product-grid-item--{{ product.id }}-{{ forloop.index }} {{ extra_class }} product-item--{{ product.id }}-{{ forloop.index }}"> 
+  
+  <div class="product-image-area">
+    <a href="{{ product.url }}" data-product-url aria-label="{{ product.title }}">
+      {% unless img_size %}
+        {% assign img_size = '316x' %}
+      {% endunless %}
+
+      {% assign image = product.featured_image %}
+
+      {% render 'picture-element', image: image, image_mobile: blank, size: img_size, alt: product.title, show_placeholder: true, extra_class: 'object-fit--cover' %}
+
+      {% if product.images.size > 1 %}
+        {% render 'picture-element', image: product.images[1], image_mobile: '1px', size: img_size, alt: product.title, extra_class: 'hover-image desktop-only object-fit--cover', manual_lazy_load: true %}
+      {% endif %}
+    </a>
+
+    {% include 'product--badges' %}
+  </div>
+  
+  <div class="product-info-area">
+
+    {% if product.vendor != blank %}
+      <div class="product-vendor">
+        {{ product.vendor }}
+      </div>
+    {% endif %}
+
+    <a href="{{ product.url }}" data-product-url class="h6 product-title">{{ product.title }}</a>
+    
+  </div>
+
+</div>

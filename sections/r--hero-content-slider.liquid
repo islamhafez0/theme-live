@@ -1,0 +1,264 @@
+{% assign ss = section.settings %}
+
+<div class="hero-content-slider" data-keen-slider='{
+  "autoplay": {{ ss.autoplay | json }},
+  "autoplaySpeed": {{ ss.interval | times: 1000.00 | json }},
+  "duration": {{ ss.speed | times: 1000.00 | json }},
+  "fade": {{ ss.fade | json }},
+  "arrows": true,
+  "dots": true,
+  "adaptiveHeight": true,
+  "pauseOnHover": false,
+  "loop": true,
+  "responsive": [ 
+    {
+      "breakpoint": 834,
+      "settings": {
+        "arrows": false,
+        "autoplay": false,
+        "autoplayOnScroll": false,
+        "adaptiveHeight": true
+      }
+    }
+  ]
+}'> 
+
+  {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+    
+    <div class="hero-content-slide hero-content-slide--{{ bs.layout }} flex">
+
+      <div class="image-area {% if ss.strict_height %}image-area--strict-height{% endif %}" style="
+        --height: {{ ss.height }}px;
+      ">
+        {% assign image_size = '960x' %}
+        {% if bs.layout == 'fullwidth' %}
+          {% assign image_size = '1920x' %}        
+        {% endif %}
+
+        {% render 'picture-element', image: bs.image, image_mobile: bs.image_mobile, size: image_size, alt: bs.title, extra_class: 'object-fit--cover'  %}
+      </div>
+
+      <div class="content-area" style="
+        --color-bg: {{ bs.bg_color }};
+        --color-text: {{ bs.text_color }};
+      ">
+        <div class="inner flex f-d-column {{ bs.horizontal_alignment }} {{ bs.vertical_alignment }} {{ bs.text_alignment }}">
+
+          {% if bs.title != blank %}
+            <{{ bs.title_tag }} class="title">{{ bs.title }}</{{ bs.title_tag }}>
+          {% endif %}
+
+          {% if bs.content != blank %}
+            <div class="rte">{{ bs.content }}</div>
+          {% endif %}
+
+          {% if bs.button_text != blank %}
+            <div class="button-wrapper {{ bs.text_alignment }}">
+              <a {% if bs.button_url != blank %}href="{{ bs.button_url }}"{% endif %} class="button button--{{ bs.button_type }}">
+                {{ bs.button_text }}
+              </a>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+
+</div>
+
+{% schema %}
+{
+  "name": "R - Hero Content Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay"
+    },
+    {
+      "type": "range",
+      "id": "interval",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "unit": "sec",
+      "label": "Slide Change Interval (autoplay)",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "unit": "sec",
+      "label": "Slide Change Speed",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "fade",
+      "label": "Fade instead of slide"
+    },
+    {
+      "type": "header",
+      "content": "Slider Height"
+    },
+    {
+      "type": "checkbox",
+      "id": "strict_height",
+      "default": true,
+      "label": "Slider custom desktop height"
+    },
+    {
+      "type": "number",
+      "id": "height",
+      "default": 400,
+      "label": "Desktop slider height"
+    }
+  ],
+  "blocks":[
+    {
+      "name":"Slide",
+      "type":"slide",
+      "settings":[
+        {
+          "type": "select",
+          "id": "layout",
+          "default": "image-left",
+          "options": [
+              { "value": "fullwidth", "label": "Fullwidth"},
+              { "value": "image-left", "label": "Image/Content"},
+              { "value": "image-right", "label": "Content/Image"}
+            ],
+          "label": "Layout"
+        },
+        {
+          "type":"header",
+          "content":"Image area"
+        },
+        {
+          "type":"image_picker",
+          "id":"image",
+          "label":"Image"
+        },
+        {
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"Image (Mobile)"
+        },
+        {
+          "type":"header",
+          "content":"Content area"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title"
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "default": "h2",
+          "options": [
+              { "value": "h1", "label": "h1"},
+              { "value": "h2", "label": "h2"},
+              { "value": "h3", "label": "h3"},
+              { "value": "h4", "label": "h4"},
+              { "value": "h5", "label": "h5"},
+              { "value": "h6", "label": "h6"}
+          ],
+          "label": "Title Tag"
+        },
+        {
+          "type":"richtext",
+          "id":"content",
+          "label":"Content"
+        },
+        {
+          "type":"text",
+          "id":"button_text",
+          "label":"Button Text"
+        },
+        {
+          "type":"url",
+          "id":"button_url",
+          "label":"URL"
+        },
+        {
+           "type": "select",
+           "id": "button_type",
+           "default": "primary",
+           "options": [
+              { "value": "primary", "label": "Primary"},
+              { "value": "secondary", "label": "Secondary"},
+              { "value": "third", "label": "Third"}
+           ],
+           "label": "Button Type"
+        },
+        {
+          "type":"header",
+          "content":"Content alignment"
+        },
+        {
+          "type": "select",
+          "id": "vertical_alignment",
+          "default": "f-j-center",
+          "options": [
+            { "value": "f-j-start", "label": "Top"},
+            { "value": "f-j-center", "label": "Center"},
+            { "value": "f-j-end", "label": "Bottom"}
+          ],
+          "label": "Vertical Alignment"
+        },
+        {
+          "type": "select",
+          "id": "horizontal_alignment",
+          "default": "f-a-center",
+          "options": [
+            { "value": "f-a-start", "label": "Left"},
+            { "value": "f-a-center", "label": "Center"},
+            { "value": "f-a-end", "label": "Right"}
+          ],
+          "label": "Horizontal Alignment"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "default": "text-center",
+          "options": [
+            { "value": "text-left", "label": "Left"},
+            { "value": "text-center", "label": "Center"},
+            { "value": "text-right", "label": "Right"}
+          ],
+          "label": "Text Alignment"
+        },
+        {
+          "type":"header",
+          "content":"Colours area"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Colour",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Colour",
+          "default": "#3e3e3e"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Hero Content Slider"
+    }
+  ]
+}
+{% endschema %}

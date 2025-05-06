@@ -1,0 +1,315 @@
+<div id="{{ section.id }}" class="blog-with-productmainContainer">
+  <div class="blog-with-productsubContainer">
+    <div class="blog-with-productblogTextContainer">
+      <div class="blog-with-product_heading">
+        <h1>{{ section.settings.mainHeaing }}</h1>
+      </div>
+      <div class="blog-with-productmainText">
+        <div class="bwp_miniPara">{{ section.settings.mainText }}</div>
+      </div>
+      <div class="productContainer">
+        <div class="productImages">
+          <div class="productImg">
+            <a href="{{ section.settings.product.url }}">
+              {% if section.settings.productImg1 != blank %}
+                <img src="{{ section.settings.productImg1 | img_url: 'master' }}" class="img1 ">
+              {% else %}
+                <img src="{{ section.settings.product.featured_image | img_url: 'master' }}" class="img1 ">
+              {% endif %}
+            </a>
+            <div class="productInfo">
+              <a href="{{ section.settings.product.url }}">
+                <div class="productTitle">{{ section.settings.product.title }}</div>
+                <div class="productPrice">{{ section.settings.product.price | money }}</div>
+              </a>
+              <div class="add-to-cart">
+                <form method="post" action="/cart/add">
+                  <input name="id" value="{{ section.settings.product.variants.first.id }}" type="hidden">
+                  <input
+                    name="add"
+                    value="ADD"
+                    type="submit"
+                    class="button button--full-width button--secondary btn"
+                  >
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="productImg">
+            <img src="{{ section.settings.productImg2 | img_url: 'master' }}" class="hideInMobile">
+          </div>
+          <div class="productImg productImgLast">
+            <a href="{{ section.settings.collection.url }}">
+              <img src="{{ section.settings.productImg3 | img_url: 'master' }}" class="hideInMobile">
+              <div style="display: block;">
+                <!-- empty -->
+              </div>
+              <div class="btn collectionBtn button button--full-width button--secondary">
+                {% if section.settings.collectionText != blank %}
+                  {{ section.settings.collectionText }}
+                {% else %}
+                  {{ section.settings.collection.title }}
+                {% endif %}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .blog-with-productmainContainer{
+    max-width: {{ section.settings.page_size }}px;
+    background-color: {{ section.settings.bgColor}};
+    margin: 0 auto;
+  }
+  .blog-with-productsubContainer{
+     padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+  }
+  .blog-with-product_heading{
+      margin-bottom: 30px;
+  }
+  .blog-with-productblogTextContainer{
+    width: 100%;
+  }
+  .bwp_miniPara p{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+    line-height: 1.6em;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-family: BrandonGrotesque !important;
+  }
+  #{{section.id}} .blog-with-productsubContainer{
+    padding: 0px 10px 64px !important;
+  }
+  .bwp_miniPara p a{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+    text-decoration: none;
+  }
+  .bwp_miniPara p a:visited{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+  }
+  .productInfo{
+
+  }
+  .productImages{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .productImages img{
+    width: 100%;
+  }
+  .productImg{
+    width: 33.33%;
+    padding: 20px 20px 0;
+  }
+  .productImg a {
+    text-decoration: none;
+  }
+  .btn{
+    border: 1px solid #000;
+  }
+  .productImgLast .collectionBtn{
+    margin-top: 58px;
+    background-color: #e9eae6;
+    border-style: solid;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 400;
+    font-family: BrandonGrotesque!important;
+    border-width: 1px;
+  }
+    @media only screen and (max-width:767px){
+    .blog-with-productsubContainer{
+      padding: {{ section.settings.padding_tb_mb }}px {{ section.settings.padding_lr_mb }}px;
+    }
+      .productImages {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+      .productImg {
+        width: 100%;
+        padding: 20px 20px 0;
+    }
+       .bwp_miniPara p {
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+       .bwp_miniPara p a{
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+       .bwp_miniPara p strong{
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+      .hideInMobile{
+        display: none;
+      }
+    }
+</style>
+{% schema %}
+{
+  "name": "Blog with Product",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+      {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "productImg1",
+      "label": "Product Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "productImg2",
+      "label": "Product Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "productImg3",
+      "label": "Product Image 3"
+    },
+    {
+      "type": "text",
+      "id": "mainHeaing",
+      "label": "Mini Text",
+      "default": "Dry Skin"
+    },
+    {
+      "type": "richtext",
+      "id": "mainText",
+      "label": "Mini Text",
+      "default": "<p>We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use  </p>"
+    },
+    {
+      "type": "color",
+      "id": "paraColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "collectionText",
+      "label": "Collection Title"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "id": "paraSize",
+      "label": "Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "id": "paraWeight",
+      "label": "Text Weight",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#e3ebda"
+    },
+      {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "range",
+      "id": "paraSize_mob",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size on mobile",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_tb_mb",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top bottom",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_lr_mb",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 15
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Blog with Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign tag_badge_split = settings.badge_tags | newline_to_br | strip_newlines | split: '<br />' %}
+
+<ul class="product-text-badges {{ extra_class }}">
+  {% if on_sale %}
+    <li>
+      {{ 'products.product.on_sale' | t }}
+    </li>
+  {% endif %}
+
+  {% for split_item in tag_badge_split %}
+    {% assign split_item_split = split_item | split: "|" %}
+    {% assign tag_to_check = split_item_split[0] %}
+    {% assign badge_text = split_item_split[1] %}
+
+    {% if product.tags contains tag_to_check %}
+      <li>
+        {{ badge_text }}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>  
+
+{% assign extra_class = '' %}

@@ -1,0 +1,124 @@
+<div class="full_width_mainContainer">
+  <div class="full_width_subContainer">
+    <div class="full_width_blogTextContainer">
+      <div class="full_width_mainText">
+        <div class="miniPara">{{ section.settings.full_width_mainText }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .full_width_mainContainer{
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    background-color: {{ section.settings.bgColor}};
+    margin: 0 auto;
+  }
+  .full_width_subContainer{
+     padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+  }
+  .full_width_blogTextContainer{
+    width: 100%;
+    display: flex;
+    padding: 0px 0px;
+    flex-wrap: nowrap;
+    text-align: left;
+  }
+  .miniPara p{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+    font-family: Brandon;
+  }
+</style>
+{% schema %}
+{
+  "name": "Full Width Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+      {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "richtext",
+      "id": "full_width_mainText",
+      "label": "Mini Text",
+      "default": "<p>We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use  </p>"
+    },
+    {
+      "type": "color",
+      "id": "paraColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "id": "paraSize",
+      "label": "Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "id": "paraWeight",
+      "label": "Text Weight",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#e3ebda"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Full Width Text"
+    }
+  ]
+}
+{% endschema %}

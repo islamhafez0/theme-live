@@ -1,0 +1,146 @@
+<div class="herbal-component-container herbal-component-container--{{ section.id }}">
+  {% if section.settings.logoImg != blank %}
+    <div class="mainContainer">
+      <div class="subContainer logoContainer header__heading-logo-wrapper">
+        <img src="{{ section.settings.logoImg | img_url: '1200x' }}" alt="Herbal Components">
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.logoImg != blank and section.settings.testimonies != blank %}
+    <hr>
+  {% endif %}
+  
+  {% if section.settings.testimonies != blank %}
+    <div class="mainContainer">
+      <div class="subContainer testimonies">
+        <img src="{{ section.settings.testimonies | img_url: '1200x' }}" alt="Herbal Components">
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .herbal-component-container--{{ section.id }}{
+    max-width: 100%;
+    background-color: {{ section.settings.bgColor }};
+  }
+  .herbal-component-container--{{ section.id }} .mainContainer{
+    padding: {{ section.settings.topBottomPadding }}px {{ section.settings.rightLeftPadding }}px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .herbal-component-container--{{ section.id }} .mainContainer:last-child{
+    padding: 40px 90px;
+  }
+  .testimonies{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    max-width: 1200px;
+    text-align: center;
+  }
+  .subContainer img{
+    width: 100%;
+  }
+  .logoContainer img{
+    max-width: 250px;
+    text-align: center;
+  }
+  .logoContainer{
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 60px 0 25px;
+  }
+  hr{
+    margin: 0;
+    height: {{ section.settings.breakerTh }}px;
+    background-color: {{ section.settings.breakerColor }};
+  }
+  @media only screen and (max-width:767px){
+    .herbal-component-container--{{ section.id }} .header__heading-logo-wrapper{
+      width: 230px;
+    }
+   .herbal-component-container--{{ section.id }} .mainContainer:last-child {
+      padding: 20px 10px;
+    }
+    .logoContainer{
+      padding: 0;
+    }
+  }
+  @media only screen and (max-width:600px){
+    .herbal-component-container--{{ section.id }} .header__heading-logo-wrapper{
+      width: 130px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Herbal Components",
+  "settings": [
+     {
+      "type": "image_picker",
+      "id": "logoImg",
+      "label": "Logo Image"
+     },
+     {
+      "type": "image_picker",
+      "id": "testimonies",
+      "label": "Testimony Image"
+     },
+     {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#e8decc"
+    },
+     {
+      "type": "color",
+      "id": "breakerColor",
+      "label": "Breaker Color",
+      "default": "#333"
+    },
+    {
+      "type": "range",
+      "id": "topBottomPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Top Bottom Text Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "rightLeftPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Left Right Text Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "breakerTh",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Breaker Thickness",
+      "default": 1
+    }
+
+
+
+  ],
+  "presets": [
+    {
+      "name": "Herbal Components"
+    }
+  ]
+
+}
+{% endschema %}

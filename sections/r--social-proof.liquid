@@ -1,0 +1,116 @@
+<div class="r--social-proof section-{{ section.id }}"
+  style="
+    --background_color: {{ section.settings.background_color }};
+">
+
+        <div class="wrapper">
+          <div class="section-header section-header--{{ section.settings.heading_alignment }}">
+              {% if section.settings.subtitle != blank %}
+                <h3 class="subtitle">{{ section.settings.subtitle }}</h3>
+              {% endif %}
+
+              <h2>{{ section.settings.heading }}</h2>
+          </div>
+        </div>
+
+        <div class="r--social-proof__slider" data-keen-slider='{
+        "slidesPerView": 4.35,
+        "spacing": 16,
+        "arrows": true,
+        "responsive": [
+            {
+            "breakpoint": "990px",
+            "settings": {
+                "arrows": false,
+                "slidesPerView": 3.2
+            }
+            },
+            {
+            "breakpoint": "480px",
+            "settings": {
+                "arrows": false,
+                "slidesPerView": 2.1,
+                "spacing": 8
+            }
+            }
+        ]
+        }'>
+        {% for block in section.blocks %}
+            {% assign bs = block.settings %}
+            {% if bs.image != blank %}
+                <{% if bs.link != blank %}a href="{{ bs.link }}"{% else %}div{% endif %} class="r--social-proof__image">
+                    {% render 'picture-element', image: bs.image, image_mobile: blank, size: '400x400', alt: bs.image.alt, show_placeholder: true, extra_class: 'object-fit--cover' %}
+                    {% if bs.text != blank %}
+                        <p>{{ bs.text }}</p>
+                    {% endif %}
+                </{% if bs.link != blank %}a{% else %}div{% endif %}>
+            {% endif %}
+        {% endfor %}
+        </div>
+</div>
+
+{% schema %}
+{
+  "name": "Social Proof",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "",
+      "label": "Heading alignment"
+    }
+  ],
+  "blocks":[
+    {
+      "name": "Image",
+      "type": "block",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof"
+    }
+  ]
+}
+{% endschema %}

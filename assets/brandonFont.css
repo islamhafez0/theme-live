@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'BrandonGrotesque';
+    src: url('https://cdn.shopify.com/s/files/1/0667/6571/7736/files/AnyConv.com__Brandon_reg_1.woff2?v=1697206930') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0667/6571/7736/files/Brandon_reg_1.woff?v=1697206754') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BrandonGrotesque-it';
+    src: url('https://cdn.shopify.com/s/files/1/0667/6571/7736/files/AnyConv.com__Brandon_reg_it_1.woff2?v=1697206930') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0667/6571/7736/files/Brandon_reg_it_1.woff?v=1697206754') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

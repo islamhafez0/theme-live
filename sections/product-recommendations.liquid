@@ -1,0 +1,5 @@
+{%- for product in recommendations.products -%}
+  <li class="upsell-item" data-recommended-item>
+    {% include 'product-grid-item' %}
+  </li>
+{%- endfor -%}

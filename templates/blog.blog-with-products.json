@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "layout": "collage",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "157ea93b-cb2a-43e8-b7f3-66911bb0bcd9": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1250,
+        "secTopPad": 60,
+        "secRightLeftPad": 60,
+        "secBottomPad": 60,
+        "product": "detoxifying-night-brightening-serum",
+        "productImg1": "shopify:\/\/shop_images\/HG--Night-Brightening-Serum-creative_1024x1024_f362f638-812d-4dc8-8ec7-04136ee932d3.webp",
+        "productImg2": "shopify:\/\/shop_images\/HG--Night-Brightening-Serum-Model_1024x1024_6f397651-6889-483f-ae39-be3f7494cf7e.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG--Night-Brightening-Serum.webp",
+        "mainHeaing": "Dry Skin",
+        "mainText": "<p>We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use  <\/p>",
+        "paraColor": "#000000",
+        "collectionText": "",
+        "collection": "",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "#e3ebda",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "8f8a16a0-224d-408f-aa83-7c4d79a706ff": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1250,
+        "secTopPad": 60,
+        "secRightLeftPad": 60,
+        "secBottomPad": 60,
+        "product": "acne-oil-control-serum",
+        "productImg2": "shopify:\/\/shop_images\/HG-Website---Acne-serum-model_8b944e6e-4814-470b-a15d-e3de85c2cae0.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG-Website-Acne-serum-product_bef9d6c6-3aa7-46c3-9223-3d3058e9d4f6.webp",
+        "mainHeaing": "Acne-Prone Skin",
+        "mainText": "<p>The struggles of fighting cystic acne is the very thing our brand is based upon. Acne comes in all shapes and sizes, but our Acne and Oil-Control Serum is designed to kill the bacteria that creates acne, and keep your skin clear and hydrated. We know that acne scarring can be just as hard to shift as acne itself, which is why we have products designed to heal scarring as well as fight acne. <\/p><p><br\/><\/p><p>Acne is nothing to be ashamed of; in fact, people with acne prone skin actually age slower, due to the natural oils being produced by the skin!<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: ACNE & OIL CONTROL SERUM<\/strong><\/p>",
+        "paraColor": "#000",
+        "collectionText": "",
+        "collection": "acne-prone-skin",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "#e3ebda",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "157ea93b-cb2a-43e8-b7f3-66911bb0bcd9",
+    "8f8a16a0-224d-408f-aa83-7c4d79a706ff"
+  ]
+}

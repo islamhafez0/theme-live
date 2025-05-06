@@ -1,0 +1,31 @@
+{% if current_variant.featured_image != blank or current_variant.featured_media != blank %}
+  {% assign media = current_variant.featured_media %}
+  {% assign alt = media.alt | remove: 'full-width' | default: product.title %}
+  {% assign image_variant_id = '' %}
+
+  {% if media.alt contains 'full-width' %}
+    {% assign size = large_size %}
+  {% endif %}
+
+  <li {% if is_dot %}data-dot="{{ dot_index }}"{% endif %} data-product-image='{{ image.variants | map: 'id' | join: ',' }}' class="{% if media.alt contains 'full-width' %}full-width{% endif %}" {% unless mobile %}{{ fullScreenToggle | replace: 'indexNum', 0 }}{% endunless %}>
+  
+    {% if media.media_type == 'image' %}
+      {% render 'picture-element', image: media, image_mobile: media, size: size, alt: alt, extra_class: 'object-fit--cover'  %}
+    {% elsif media.media_type == 'video' %}
+  
+      <div class="video-wrapper object-fit--cover">
+        <video data-lazy muted autoplay loop playsinline -webkit-playsinline data-poster="{{ media.preview_image | img_url: size }}">
+          {% for source in media.sources %}
+            <source data-src="{{ source.url }}" type="video/{{ source.format }}">
+          {% endfor %}
+          This browser does not support the HTML5 video element.
+        </video>
+      </div>
+
+    {% endif %}
+    
+  </li>
+
+  {% assign dot_index = dot_index | plus: 1 %}
+
+{% endif %}

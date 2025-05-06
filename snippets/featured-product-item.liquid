@@ -1,0 +1,58 @@
+<div class="featured_block_box">
+
+  <a href="{{ product.url }}">
+    <div class="custom_product_img">
+      {% if product.featured_image != blank %}
+        <img
+          src="{{ product.featured_image | image_url: width: 280, height: 400 }}"
+          alt="{{ product.featured_image.alt }}" class="firstImg"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+          loading="lazy"
+        >
+
+        <img
+          src="{{ product.images.last | image_url: width: 280, height: 400 }}"
+          alt="{{ product.images.last.alt }}" class="lastimg"
+          width="{{ product.images.last.width }}"
+          height="{{ product.images.last.height }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+    <div class="custom_product_title">
+      <h2>{{ product.title }}</h2>
+    </div>
+    {% if product.metafields.custom.short_product_description.value != blank %}
+      <p class="custom_product_short_description">{{ product.metafields.custom.short_product_description.value }}</p>
+    {% endif %}
+  </a>
+
+  <div class="ruk_rating_snippet" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
+
+  <div class="custom_product_price">
+    <p>{{ product.price | money }}</p>
+  </div>
+
+  {% if product.first_available_variant %}
+    <div class="custom_product_url">
+      <form
+        method="post"
+        action="/cart/add"
+        class="related-product-button-box mainAddtoCart"
+        id="customAddToCart"
+      >
+        <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+        <input type="submit" value="ADD" class="custom-button">
+      </form>
+    </div>
+  {% else %}
+    <div class="custom_product_url">
+      <form>
+        <input type="hidden" name="id" value="" disabled>
+        <input type="submit" value="Sold Out" class="custom-button" disabled>
+      </form>
+    </div>
+  {% endif %}
+
+</div>

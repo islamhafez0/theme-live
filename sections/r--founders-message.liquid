@@ -1,0 +1,117 @@
+{% liquid
+    assign ss = section.settings
+%}
+
+<div class='r--founders-message r--founders-message--{{ section.id }}' style="--image-width: {{ ss.image_width | append: 'px' }};">
+    <div class="media">
+        {% render 'picture-element', image: ss.background_desktop, image_mobile: ss.background_mobile, size: '1920x' %}
+    </div>
+
+
+    <div class="content wrapper">
+        <div class="inner">
+            {% for block in section.blocks %}
+                {% assign bs = block.settings %}
+
+                {% case block.type %}
+                    {% when 'heading' %}
+                        {% if bs.heading != blank %}
+                            <h2 class="heading">{{ bs.heading }}</h2>
+                        {% endif %}
+                    {% when 'text' %}
+                        {% if bs.description != blank %}
+                            <div class="description">
+                                {{ bs.description }}
+                            </div>
+                        {% endif %}
+                    {% when 'signature' %}
+                        {% if bs.signature_desktop != blank %}
+                            {% render 'picture-element', image: bs.signature_desktop, image_mobile: bs.signature_mobile, size: '400x' %}
+                        {% endif %}
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+
+    
+</div>
+
+{% schema %}
+{
+    "name": "R - Founders Message",
+    "class": "r--founders-message--section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Media"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_desktop",
+            "label": "Background (Desktop)"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_mobile",
+            "label": "Background (Mobile)"
+        },
+        {
+            "type": "range",
+            "id": "image_width",
+            "label": "Image width",
+            "default": 200,
+            "min": 100,
+            "max": 500,
+            "step": 5
+        }
+    ],
+    "blocks": [
+        {
+            "type": "heading",
+            "name": "Heading",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "heading",
+                    "label": "Heading"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "name": "Text",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "Desription"
+                }
+            ]
+        },
+        {
+            "type": "signature",
+            "name": "Signature",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "signature_desktop",
+                    "label": "Signature (Desktop)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "signature_mobile",
+                    "label": "Signature (Mobile)"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "R - Founders Message"
+        }
+    ]
+}
+{% endschema %}

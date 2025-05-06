@@ -1,0 +1,250 @@
+<div class="custom_collection">
+  <div class="custom_collection_container">
+    {% for block in section.blocks %}
+      <div class="custom_collection_block">
+        <a href="{{ block.settings.blockLink }}">
+          <div class="custom_collection_img">
+            <img src="{{ block.settings.collection.featured_image | img_url: 'master' }}">
+          </div>
+          <div class="custom_collection_title">
+            <h2>{{ block.settings.collection.title }}</h2>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+      .custom_collection_img img{
+        width: 100%;
+        height: 100%;
+      }
+      .custom_collection_img{
+        width: 100%;
+        height: 370px;
+      }
+      .custom_collection_block{
+        width: 365px;
+        margin-bottom: 20px;
+      }
+      .custom_collection_container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .custom_collection_container a{
+    text-decoration: none;
+      }
+      .custom_collection{
+        padding: {{ section.settings.padding_top }}px {{ section.settings.padding_left }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_right }}px;
+      }
+      .custom_collection_title h2{
+        font-family: "brandonGrotesque";
+        font-size: {{ section.settings.title_text_fz }}px;
+        font-weight: {{ section.settings.title_text_fw }};
+        color: {{ section.settings.title_text_fc }};
+        text-align: center;
+        padding-bottom: 5px;
+        letter-spacing: 0px;
+      }
+      .custom_collection_title{
+        border-bottom: 1px solid #000;
+        padding-top: 25px;
+        padding-bottom: 10px;
+      }
+   @media only screen and (max-width:1250px){
+      .custom_collection {
+      padding: 45px 0px 86px 0px;
+  }
+   }
+      @media only screen and (max-width:870px){
+        .custom_collection_container{
+          justify-content: center;
+        }
+      }
+
+      @media only screen and (max-width:767px){
+    .custom_collection_container {
+       flex-wrap: wrap;
+     }
+        .custom_collection_img {
+          width: 100%;
+          height: 100%;
+        }
+        .custom_collection{
+          padding: {{ section.settings.padding_top_mb }}px {{ section.settings.padding_left_mb }}px {{ section.settings.padding_bottom_mb }}px {{ section.settings.padding_right_mb }}px;
+        }
+        .custom_collection_title h2{
+          font-size: {{ section.settings.title_text_fz_mb }}px;
+        }
+        .custom_collection_block{
+          width: 100%;
+        }
+      }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 86
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 86
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "title_text_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Collection Title Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "title_text_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Collection Title Font Weight",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "title_text_fc",
+      "label": "Collection Title Font Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "title_text_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Collection Title Font size",
+      "default": 15
+    }
+
+  ],
+  "blocks":[
+      {
+        "name": "Collection",
+      "type": "block",
+      "settings":[
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "blockLink",
+          "label": "Collection Link"
+        }
+
+
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "CQ Custom Collection"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

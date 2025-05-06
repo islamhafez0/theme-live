@@ -1,0 +1,376 @@
+<div class="custom-featured-product section-{{ section.id }}"
+  style="
+    --background_color: {{ section.settings.background_color }};
+    --text_align: {{ section.settings.align }};
+">
+  <div class="custom_featured_product">
+
+    <div class="custom_featured_heading">
+      <h2>{{ section.settings.heading }}</h2>
+      <a href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+    </div>
+
+    <div class="custom_featured_block_wrapper">
+      <div class="custom_featured_block" data-keen-slider='{
+        "slidesPerView": 4,
+        "spacing": 16,
+        "dots": true,
+        "arrows": true,
+        "appendArrows": "#shopify-section-{{ section.id }} .custom_featured_block_wrapper",
+        "responsive": [
+          {
+            "breakpoint": "990px",
+            "settings": {
+              "arrows": false,
+              "slidesPerView": 2
+            }
+          },
+          {
+            "breakpoint": "480px",
+            "settings": {
+              "arrows": false,
+              "slidesPerView": 1
+            }
+          }
+        ]
+      }'>
+        {% for block in section.blocks %}
+          <div class="featured_block_box">
+
+            <a href="{{ block.settings.product.url }}">
+              <div class="custom_product_img">
+                {% if block.settings.product.featured_image != blank %}
+                  <img
+                    src="{{ block.settings.product.featured_image | image_url: width: 280, height: 400 }}"
+                    alt="{{ block.settings.product.featured_image.alt }}" class="firstImg"
+                    width="{{ block.settings.product.featured_image.width }}"
+                    height="{{ block.settings.product.featured_image.height }}"
+                    loading="lazy"
+                  >
+
+                  <img
+                    src="{{ block.settings.product.images.last | image_url: width: 280, height: 400 }}"
+                    alt="{{ block.settings.product.images.last.alt }}" class="lastimg"
+                    width="{{ block.settings.product.images.last.width }}"
+                    height="{{ block.settings.product.images.last.height }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="custom_product_title">
+                <h2>{{ block.settings.product.title }}</h2>
+              </div>
+              {% if block.settings.product.metafields.custom.short_product_description.value != blank %}
+                <p class="custom_product_short_description">{{ block.settings.product.metafields.custom.short_product_description.value }}</p>
+              {% endif %}
+            </a>
+
+            {% comment %}
+              {% assign card_product = block.settings.product %}
+              {%- if card_product.metafields.reviews.rating.value != blank -%}
+                {% liquid
+                  assign rating_decimal = 0
+                  assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                  if decimal >= 0.3 and decimal <= 0.7
+                    assign rating_decimal = 0.5
+                  elsif decimal > 0.7
+                    assign rating_decimal = 1
+                  endif
+                %}
+                <div
+                  class="rating"
+                  role="img"
+                  aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="rating-star"
+                    style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                  ></span>
+                </div>
+                <p class="rating-text caption">
+                  <span aria-hidden="true">
+                    {{- card_product.metafields.reviews.rating.value }} /
+                    {{ card_product.metafields.reviews.rating.value.scale_max -}}
+                  </span>
+                </p>
+                <p class="rating-count caption">
+                  <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                  <span class="visually-hidden">
+                    {{- card_product.metafields.reviews.rating_count }}
+                    {{ 'accessibility.total_reviews' | t -}}
+                  </span>
+                </p>
+              {%- endif -%}
+            {% endcomment %}
+          <div class="ruk_rating_snippet" data-sku="{{ block.settings.product.handle }};{{ block.settings.product.variants | map: 'sku' | join: ';' }};{{ block.settings.product.variants | map: 'id' | join: ';' }}"></div>
+            <div class="custom_product_price">
+              <p>{{ block.settings.product.price | money }}</p>
+            </div>
+
+            {% if block.settings.product.first_available_variant %}
+              <div class="custom_product_url">
+                <form
+                  method="post"
+                  action="/cart/add"
+                  class="related-product-button-box mainAddtoCart"
+                  id="customAddToCart"
+                >
+                  <input type="hidden" name="id" value="{{ block.settings.product.first_available_variant.id }}">
+                  <input type="submit" value="ADD" class="custom-button">
+                </form>
+              </div>
+            {% else %}
+              <div class="custom_product_url">
+                <form>
+                  <input type="hidden" name="id" value="" disabled>
+                  <input type="submit" value="Sold Out" class="custom-button" disabled>
+                </form>
+              </div>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+    .custom_featured{
+      background-color:{{ section.settings.background_color }};
+    }
+    .custom_featured_block{
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 40px 20px 0 20px;
+    }
+    .custom_featured_heading{
+       max-width: 1200px;
+       margin: 0 auto;
+       width: 100%;
+       padding: 40px 20px 0 20px;
+       text-align: {{section.settings.align}}
+    }
+    .featured_block_box{
+      width: 23%;
+      /* height: 600px; */
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+    }
+    .custom_product_img{
+     /* height: 450px; */
+    }
+    .custom_product_img img{
+      width: 100%;
+      height: auto;
+    }
+
+  .custom_product_img:hover .firstImg {
+    display: none;
+  }
+  .custom_product_img:hover .lastimg {
+    display: block;
+  }
+  .custom_product_img .lastimg {
+    display: none;
+  }
+    .custom_product_title h2{
+      font-family: BrandonGrotesque;
+      color: #000;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 15px 0px;
+    }
+    .custom_product_price p{
+      font-family: BrandonGrotesque;
+      color: #000;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 15px 0;
+    }
+    .custom_product_url .customAddToCart{
+      font-family: BrandonGrotesque;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+      border: 1px solid #000;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      justify-content: center;
+      text-decoration: none;
+      padding: 10px 0;
+    }
+    .section-{{ section.id }} .rating-star:before{
+       -webkit-text-fill-color: black;
+    }
+    .custom_featured_product{
+      padding: 50px 50px 150px 50px;
+    }
+    .custom_featured_heading h2 p{
+      font-size: 30px;
+      line-height: 1.2em;
+      letter-spacing: 0px;
+      color: #242424;
+      text-transform: none;
+      font-weight: 400;
+      font-family: BrandonGrotesque;
+    }
+    .custom_featured_heading a{
+      font-size: 15px;
+      text-transform: none;
+      font-weight: 400;
+      color: #242424;
+      font-family: BrandonGrotesque;
+      text-decoration: none;
+      margin-top: 5px;
+      display: block;
+    }
+    .featured_block_box a{
+      text-decoration: none;
+    }
+    .custom-button{
+      width: 100%;
+      background: transparent;
+      border: 1px solid #000;
+      padding: 17px 30px;
+      font-family: BrandonGrotesque !important;
+      cursor: pointer;
+      z-index: 9;
+      position: relative;
+    }
+    .related-product-button-box:hover, .custom-button:hover{
+      background: #fff !important;
+    }
+
+    @media only screen and (max-width:990px){
+      .featured_block_box{
+        width: 48%;
+        margin-bottom: 30px;
+      }
+      .featured_block_box:nth-last-child(-n + 2){
+        margin-bottom: 0;
+      }
+    }
+
+    @media only screen and (max-width:767px){
+      .custom_product_title h2{
+        font-size: 12px;
+      }
+      .custom_featured_product{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .custom_featured_heading h2 p{
+        font-size: 25px;
+      }
+      .custom_featured_heading{
+        text-align: center;
+      }
+      .custom_featured_heading{
+       padding: 0;
+    }
+      .custom_featured_block {
+      padding: 40px 15px 0 15px;
+  }
+    }
+    /* @media only screen and (max-width:600px){
+     .featured_block_box {
+        width: 100%;
+      }
+    } */
+</style>
+
+<script>
+  // $(document).ready(function() {
+  //   if ($(window).width() < 767) {
+  //     $('.custom_featured_block').slick({
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+  //       dots: true,
+  //       arrows: false,
+  //     });
+  //   }
+  // });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#eeeeeb"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "SHOP ALL"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks":[
+    {
+      "type": "@app"
+    },
+    {
+      "name": "Product",
+      "type": "block",
+      "settings":[
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Selector"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

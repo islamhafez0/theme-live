@@ -1,0 +1,199 @@
+{% assign ss = section.settings %}
+{% assign cta_links = section.blocks | where: 'type', 'cta' %}
+{% assign benefits = section.blocks | where: 'type', 'benefit' %}
+
+{% if benefits.size > 0 %}
+    <div class="r--benefits__inner" {% if ss.bg_color != blank and ss.bg_color != 'rgba(0,0,0,0)' %}style="
+        background-color: {{ ss.bg_color }};
+    "{% endif %}>
+        <div class="wrapper">
+            <div class="section-header">
+                {% if ss.subtitle != blank %}
+                <h3 class="subtitle">{{ ss.subtitle }}</h3>
+                {% endif %}
+            
+                {% if ss.title != blank %}
+                <{{ ss.title_tag }} class="h2">
+                    {{ ss.title | newline_to_br }}
+                </{{ ss.title_tag }}>
+                {% endif %}
+            
+                {% if cta_links.size > 0 %}
+                    <div class="section-header__ctas">
+                        {% for cta in cta_links %}
+                            <a
+                            {% if cta.settings.link contains '#accordion-' %}
+                                href="#"
+                                data-scroll-to='
+                                {
+                                "on": "click",
+                                "target": ".product-page .product-accordion",
+                                "preventDefault": true,
+                                "offset": 50,
+                                "click": ".product-page .product-accordion #accordion-{{ cta.settings.link | split: '#accordion-' | last | handle }}"
+                                }'
+                            {% else %}
+                            href="{{ cta.settings.link }}"
+                            {% endif %}>
+                                {{ cta.settings.text }}
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m3.5 8.5 5-5M3.5 3.5h5v5" stroke="#274438" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="r--benefits__flex flex
+                {% if ss.image_side == 'right' %}
+                is-reverse
+                {% endif %}
+            ">
+                {% if ss.image != blank %}
+                    <div class="r--benefits__image">
+                        {{ ss.image | image_url: width: 500 | image_tag }}
+                    </div>    
+                {% endif %}
+                <div class="r--benefits__grid">
+                    {% for benefit in benefits %}
+                        {% assign bs = benefit.settings %}
+                        <div class="r--benefits__item">
+                            {% if bs.icon != blank %}
+                            <div class="r--benefits__item-icon">
+                                {{ bs.icon | image_url: width: 100 | image_tag }}
+                            </div>
+                            {% endif %}
+                            <div class="content-area">
+                                {% if bs.title != blank %}
+                                    <h4>{{ bs.title }}</h4>
+                                {% endif %}
+                                {% if bs.subtitle != blank %}
+                                    <p>{{ bs.subtitle }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'section-display' %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Benefits",
+  "tag": "section",
+  "class": "r--benefits",
+  "settings": [
+    {
+        "type":"text",
+        "id":"tag",
+        "label":"Limit to tag",
+        "info": "Only used when section is on a product page"
+    },
+    {
+        "type":"color",
+        "id":"bg_color",
+        "label":"Background Colour"
+    },
+    {
+        "type": "select",
+        "id": "display_on",
+        "default": "",
+        "options": [
+        { "value": "", "label": "Both"},
+        { "value": "desktop-only", "label": "Desktop Only"},
+        { "value": "tablet-only", "label": "Mobile Only"}
+        ],
+        "label": "Display On"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "h1"},
+        { "value": "h2", "label": "h2"},
+        { "value": "h3", "label": "h3"},
+        { "value": "h4", "label": "h4"},
+        { "value": "h5", "label": "h5"},
+        { "value": "h6", "label": "h6"}
+      ],
+      "label": "Title Tag"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Main Image"
+    },
+    {
+        "type": "select",
+        "id": "image_side",
+        "default": "left",
+        "options": [
+            { "value": "left", "label": "Left"},
+            { "value": "right", "label": "Right"}
+        ],
+        "label": "Image Side"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Use #accordion-[Accordion Title] to scroll to and open an accordion, e.g. #accordion-Benefits"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits"
+    }
+  ]
+}
+{% endschema %}

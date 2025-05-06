@@ -1,0 +1,255 @@
+<div class="blog-with-productmainContainer">
+  <div class="blog-with-productsubContainer">
+    <div class="blog-with-productblogTextContainer">
+      <div class="blog-with-product_heading">
+        <h1>{{ section.settings.mainHeaing }}</h1>
+      </div>
+      <div class="blog-with-productmainText">
+        <div class="bwp_miniPara">{{ section.settings.mainText }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .blog-with-productmainContainer{
+    max-width: {{ section.settings.page_size }}px;
+    background-color: {{ section.settings.bgColor}};
+    margin: 0 auto;
+  }
+  .blog-with-productsubContainer{
+     padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+    padding: 64px 10px 64px !important;
+  }
+  .blog-with-product_heading{
+    color: #131313;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+    text-transform: none;
+    font-family: BrandonGrotesque;
+  }
+  .blog-with-product_heading{
+      margin-bottom: 30px;
+  }
+  .blog-with-productblogTextContainer{
+    width: 100%;
+  }
+  .bwp_miniPara p{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+    line-height: 1.6em;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-family: BrandonGrotesque !important;
+  }
+
+  .bwp_miniPara p a{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+    text-decoration: none;
+  }
+  .bwp_miniPara p a:visited{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+  }
+  .productInfo a{
+    color: {{ section.settings.paraColor }};
+    font-size: {{ section.settings.paraSize }}px;
+    font-weight: {{ section.settings.paraWeight }};
+  }
+  .blog-with-product_heading h1{
+    font-size: {{ section.settings.heading_fz }}px;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+    color: {{ section.settings.heading_fc }};
+    text-transform: none;
+    font-weight: {{ section.settings.heading_fw }};
+    font-family: BrandonGrotesque;
+  }
+    @media only screen and (max-width:767px){
+    .blog-with-productsubContainer{
+      padding: {{ section.settings.padding_tb_mb }}px {{ section.settings.padding_lr_mb }}px;
+    }
+      .blog-with-product_heading h1{
+        font-size: {{ section.settings.heading_fz_mb }}px;
+      }
+       .bwp_miniPara p {
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+       .bwp_miniPara p a{
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+       .bwp_miniPara p strong{
+          font-size: {{ section.settings.paraSize_mob }}px;
+      }
+    }
+</style>
+{% schema %}
+{
+  "name": "Heading And Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+      {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "mainHeaing",
+      "label": "Main Text",
+      "default": "Dry Skin"
+    },
+    {
+      "type": "color",
+      "id": "heading_fc",
+      "label": "Text Color",
+      "default": "#131313"
+    },
+    {
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "id": "heading_fz",
+      "label": "Text Size",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "id": "heading_fw",
+      "label": "Text Weight",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "heading_fz_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size on mobile",
+      "default": 33
+    },
+    {
+      "type": "richtext",
+      "id": "mainText",
+      "label": "Mini Text",
+      "default": "<p>We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use  </p>"
+    },
+    {
+      "type": "color",
+      "id": "paraColor",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "id": "paraSize",
+      "label": "Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "id": "paraWeight",
+      "label": "Text Weight",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#e3ebda"
+    },
+      {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "range",
+      "id": "paraSize_mob",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size on mobile",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_tb_mb",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top bottom",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_lr_mb",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 15
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Heading And Text"
+    }
+  ]
+}
+{% endschema %}

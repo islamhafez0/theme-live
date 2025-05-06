@@ -1,0 +1,58 @@
+<div class="product-grid-item product-grid-item--{{ product.id }}-{{ forloop.index }} {{ extra_class }} product-item--{{ product.id }}-{{ forloop.index }}"> 
+  
+  <div class="product-image-area">
+    <a href="{{ url }}" data-product-url aria-label="{{ product.title }}">
+      {% unless img_size %}
+        {% assign img_size = '316x' %}
+      {% endunless %}
+
+      {% assign image = product.featured_image %}
+
+      {% render 'picture-element', image: image, image_mobile: blank, size: img_size, alt: product.title, show_placeholder: true, extra_class: 'object-fit--cover' %}
+
+      {% if product.images.size > 1 %}
+        {% render 'picture-element', image: product.images[1], image_mobile: '1px', size: img_size, alt: product.title, extra_class: 'hover-image desktop-only object-fit--cover', manual_lazy_load: true %}
+      {% endif %}
+    </a>
+
+    {% include 'product--badges' %}
+  </div>
+  
+  <div class="product-info-area">
+
+    <div class="title-price flex">
+      <div class="left-area">
+        <a href="{{ url }}" data-product-url class="h6 product-title">{{ product.title }}</a>
+      </div>
+
+      <div class="right-area">
+        <p class="product-prices">
+          {% assign current_variant = product.selected_or_first_available_variant %}
+
+          <span class="from">{{ 'products.product.price.from' | t }}</span>
+          <span class="money product-price {% if current_variant.compare_at_price > current_variant.price %}on-sale{% endif %}">
+            {{ current_variant.price | money_without_trailing_zeros }}
+          </span>
+          <span data-compare-price class="money compare-at-price {% unless current_variant.compare_at_price > current_variant.price %}hide{% endunless %}">
+            {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="vendor-rating">
+      <div class="left-area">
+        {% if product.vendor != blank %}
+          <div class="product-vendor">
+            {{ product.vendor }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="right-area">
+        <div class="ruk_rating_snippet" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
+      </div>
+    </div>
+    
+  </div>
+
+</div>

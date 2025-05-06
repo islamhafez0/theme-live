@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "heading_and_text_B9gdwE": {
+      "type": "headingAndText",
+      "settings": {
+        "page_size": 1250,
+        "secTopPad": 60,
+        "secRightLeftPad": 60,
+        "secBottomPad": 60,
+        "mainHeaing": "New Landing Page Heading",
+        "heading_fc": "#131313",
+        "heading_fz": 38,
+        "heading_fw": 400,
+        "heading_fz_mb": 33,
+        "mainText": "<p>We formulate our products by combining knowledge in Herbal Medicine, the latest scientific research in skincare and innovative cosmetic formulation practises. This way, we ensure our products are always effective, free from harmful ingredients and preservatives, and pleasurable to use  <\/p>",
+        "paraColor": "#000",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "#e3ebda",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "173038684173048561": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_CcKYUD": {
+          "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/form-embed-block\/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "TeuHR8"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_CcKYUD"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "heading_and_text_B9gdwE",
+    "main",
+    "173038684173048561"
+  ]
+}

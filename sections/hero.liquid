@@ -1,0 +1,168 @@
+{% assign ss = section.settings %}
+
+<div class="keen-slider slider-{{ section.id }} {% if section.blocks.size < 2 %}visible{% endif %}"
+{% if section.blocks.size > 1 %}
+  data-keen-slider='{
+    "autoplay": {{ ss.autoplay | json }},
+    "autoplaySpeed": {{ ss.interval | times: 1000.00 | json }},
+    "duration": {{ ss.speed | times: 1000.00 | json }},
+    "fade": {{ ss.fade | json }},
+    "dots": {{ ss.dots | json }},
+    "adaptiveHeight": false,
+    "pauseOnHover": false,
+    "loop": true,
+    "responsive": [ 
+        {
+          "breakpoint": 834,
+          "settings": {
+            "autoplay": false,
+            "autoplayOnScroll": false,
+            "adaptiveHeight": true
+          }
+        }
+    ]
+  }'
+{% endif %}
+> 
+
+  {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+    
+    <div class="keen-slider__slide flex f-wrap slide">
+
+      <div class="image-area">
+        {% render 'picture-element', image: bs.image, image_mobile: bs.image_mobile, size: '1920x', alt: bs.title  %}
+      </div>
+
+      <div class="content-area flex f-a-end f-j-start">
+
+        <div class="inner" style="color: {{ bs.text_color }};">
+
+          {% if bs.title != blank %}
+            <{{ bs.title_tag }} class="h1">{{ bs.title }}</{{ bs.title_tag }}>
+          {% endif %}
+
+          {% if bs.button_text != blank %}
+            <a {% if bs.button_url != blank %}href="{{ bs.button_url }}"{% endif %} class="btn btn--{{ bs.button_type }}">
+              {{ bs.button_text }}
+            </a>
+          {% endif %}
+         
+        </div>
+
+      </div>
+
+    </div>
+  {% endfor %}
+
+</div>
+
+
+{% schema %}
+{
+    "name":"Hero Slider",
+    "class": "homepage-section hero-slider",
+    "settings":[
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay"
+        },
+        {
+          "type":      "range",
+          "id":        "interval",
+          "min":       0,
+          "max":       10,
+          "step":      0.1,
+          "unit":      "sec",
+          "label":     "Slide Change Interval (autoplay)",
+          "default":   5
+        },
+        {
+          "type":      "range",
+          "id":        "speed",
+          "min":       0,
+          "max":       10,
+          "step":      0.1,
+          "unit":      "sec",
+          "label":     "Slide Change Speed",
+          "default":   3
+        },
+        {
+          "type": "checkbox",
+          "id": "fade",
+          "label": "Fade instead of slide"
+        }
+    ],
+    "blocks":[
+      {
+        "name":"Full Slide",
+        "type":"full-slide",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"image_mobile",
+            "label":"Image (Mobile)"
+          },
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Main Title"
+          },
+          {
+             "type": "select",
+             "id": "title_tag",
+             "default": "h1",
+             "options": [
+                { "value": "h1", "label": "h1"},
+                { "value": "h2", "label": "h2"},
+                { "value": "h3", "label": "h3"},
+                { "value": "h4", "label": "h4"},
+                { "value": "h5", "label": "h5"},
+                { "value": "h6", "label": "h6"}
+             ],
+             "label": "Title Tag"
+          },
+          {
+            "type":"text",
+            "id":"button_text",
+            "label":"Button Text"
+          },
+          {
+            "type":"url",
+            "id":"button_url",
+            "label":"URL"
+          },
+          {
+             "type": "select",
+             "id": "button_type",
+             "default": "primary",
+             "options": [
+                { "value": "primary", "label": "Primary"},
+                { "value": "secondary", "label": "Secondary"},
+                { "value": "third", "label": "Third"}
+             ],
+             "label": "Button Type"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#3e3e3e"
+          }
+        ]
+      }
+    ],
+    "presets":[
+        {
+            "category":"Homepage",
+            "name":"Hero Slider"
+        }
+    ]
+}
+{% endschema %}

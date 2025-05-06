@@ -1,0 +1,168 @@
+{% assign ss = sections.settings %}
+
+<div class="featured-collections section-{{ section.id }}"
+  style="
+    --background_color: {{ section.settings.background_color }};
+    --text_align: {{ section.settings.align }};
+  "
+>
+
+  <div class="featured-collections__tabs-header flex">
+    {% for block in section.blocks %}
+      {% assign bs = block.settings %}
+      
+      <h2 class="tabs-header__title tabs-header__title--{{ block.id }} {% if forloop.first %}active{% endif %}"
+        data-text="{{ bs.title }}"
+        data-class-change='[
+          {
+            "target": ".tabs-header__title",
+            "class": "active",
+            "method": "remove",
+            "on": "click"
+          },
+          {
+            "target": ".tabs-header__title--{{ block.id }}",
+            "class": "active",
+            "method": "add",
+            "on": "click"
+          },
+          {
+            "target": ".featured-collections__tab",
+            "class": "active",
+            "method": "remove",
+            "on": "click"
+          },
+          {
+            "target": ".featured-collections__tab--{{ block.id }}",
+            "class": "active",
+            "method": "add",
+            "on": "click"
+          }
+        ]'
+        data-method-call='[
+          {
+            "componentId": "featuredCollectionTabSlider-{{ block.id }}",
+            "on": "click",
+            "method": "update",
+            "args": ""
+          }
+        ]' 
+      >{{ bs.title }}</h2>
+    {% endfor %}
+  </div>
+
+  <div class="featured-collections__tabs">
+    {% for block in section.blocks %}
+      {% assign bs = block.settings %}
+    
+      <div class="featured-collections__tab featured-collections__tab--{{ block.id }} {% if forloop.first %}active{% endif %}">
+        <div class="featured-collections__collection" data-keen-slider='{
+          "id": "featuredCollectionTabSlider-{{ block.id }}",
+          "slidesPerView": 4,
+          "spacing": 16,
+          "dots": false,
+          "arrows": true,
+          "responsive": [
+            {
+              "breakpoint": "990px",
+              "settings": {
+                "dots": true,
+                "arrows": false,
+                "slidesPerView": 2
+              }
+            },
+            {
+              "breakpoint": "480px",
+              "settings": {
+                "dots": true,
+                "arrows": false,
+                "slidesPerView": 1
+              }
+            }
+          ]
+        }'>
+
+          {% for product in bs.products %}
+            {% include 'featured-product-item' %}
+          {% endfor %}
+
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "R - Toggle Products",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#eeeeeb"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "SHOP ALL"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks":[
+    {
+      "name": "Products",
+      "type": "block",
+      "settings":[
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R - Toggle Products"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,195 @@
+.hide {
+    display: none;
+}
+
+.read_less_btn {
+    display: none;
+}
+
+.read_less_btn,
+.read_more_btn {
+    border: none;
+    background: transparent;
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    cursor: pointer;
+}
+
+.product_inner_div {
+    height: 80px;
+    overflow: hidden;
+}
+
+/* accordion style code */
+
+.accordion {
+    margin: 1rem 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #cecece;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #cecece;
+    list-style: none !important;
+}
+
+/* Panel */
+.accordion-panel {
+  margin: 0;
+  padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
+  display: none;
+  font-size: {{settings.custom_acco_summary_fz}}px;
+  font-weight: {{settings.custom_acco_summary_fw}};
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: {{settings.custom_acco_summary_fc}};
+  border-top: 1px solid #cecece;
+}
+
+.accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+.accordion-panel p {
+  font-size: {{settings.custom_acco_summary_fz}}px;
+  font-weight: {{settings.custom_acco_summary_fw}};
+  color: {{settings.custom_acco_summary_fc}};
+  line-height: 1.8em;
+  letter-spacing: 0px;
+  font-family: BrandonGrotesque;
+  margin-bottom: 25px;
+}
+.accordion-panel p a{
+  font-size: {{settings.custom_acco_summary_fz_a}}px;
+  font-weight: {{settings.custom_acco_summary_fw_a}};
+  color: {{settings.custom_acco_summary_fc_a}};
+  line-height: 1.8em;
+  letter-spacing: 0px;
+  font-family: BrandonGrotesque;
+  text-decoration: none;
+}
+
+/* Active */
+.accordion-item.is-active .accordion-thumb::before {
+    transform: rotate(45deg);
+}
+
+
+
+/* faqs */
+.accordion-panel .page-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.accordion-panel .page-width {
+    padding: 0px 0px
+}
+
+.accordion-thumb {
+  font-weight: {{settings.custom_acco_heading_fw}};
+  font-size: {{settings.custom_acco_heading_fz}}px;
+  color: {{settings.custom_acco_heading_fc}};
+  line-height: 1.8em;
+  letter-spacing: .6px!important;
+  font-family: BrandonGrotesque;
+  padding: 15px 0;
+}
+
+
+.accordion-thumb {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.acc_minus {
+    transition: transform 0.2s ease-out;
+    display: none;
+    width: 20px;
+}
+
+.acc_plus {
+    transition: transform 0.2s ease-out;
+    display: block;
+    width: 20px;
+}
+
+.accordion .is-active .acc_minus {
+    display: block;
+}
+
+.accordion .is-active .acc_plus {
+    display: none;
+}
+
+.acc_more,
+.acc_less {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    cursor: pointer;
+}
+
+.acc_less {
+    display: none;
+}
+
+.accordion-panel_des p {
+/*     height: 50px; */
+    overflow: hidden;
+}
+.accordion{
+  border-top: none !important;
+}
+.metafield-rich_text_field li a, .metafield-rich_text_field li{
+  color: rgb(25, 81, 27);
+  text-decoration: none;
+  font-family: BrandonGrotesque;
+  letter-spacing: 0px;
+  font-weight: 400 !important;
+}
+.metafield-rich_text_field h6{
+  font-size: {{settings.custom_acco_summary_fz}}px;
+  font-weight: {{settings.custom_acco_summary_fw}};
+  color: {{settings.custom_acco_summary_fc}};
+  line-height: 1.8em;
+  letter-spacing: 0px;
+  font-family: BrandonGrotesque;
+}
+.metafield-rich_text_field li::marker{
+  color: #000 !important;
+}
+.accordion-rich-text ol{
+  padding-left: 20px;
+}
+
+@media only screen and (max-width:767px) {
+  .metafield-rich_text_field h6{
+    font-size: {{settings.custom_acco_summary_fz_mb}}px;
+  }
+    .product_inner_div {
+        height: 60px;
+    }
+
+    .read_less_btn,
+    .read_more_btn {
+        font-size: 14px;
+    }
+  .accordion-panel {
+    font-size: {{settings.custom_acco_summary_fz_mb}}px;
+    word-spacing: 0px;
+  }
+  .accordion-panel p {
+    font-size: {{settings.custom_acco_summary_fz_mb}}px;
+  }
+}
+

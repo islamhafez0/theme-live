@@ -1,0 +1,112 @@
+.drawer__heading{
+  font-size: 24px;
+  color: #000;
+  font-weight: 500;
+  font-family:"Josefin Sans", sans-serif;
+}
+.cart-item__name {
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    color: #121212;
+   font-family:"Josefin Sans", sans-serif;
+}
+.product-option {
+    font-size: 1.4rem;
+    font-family:"Josefin Sans", sans-serif;
+  color: #121212;
+}
+.price--end{
+  font-family:"Josefin Sans", sans-serif;
+  color: #121212 !important;
+}
+.cart-item__quantity-wrapper .quantity{
+  border: 1px solid #000;
+}
+
+.cart-item__quantity-wrapper .quantity .quantity__button {
+    border:none !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+.cart-item__quantity-wrapper .quantity .quantity__input {
+    border:none !important; 
+    width: 50px !important;
+    height: 50px !important;
+}
+.cart-drawer .cart-items thead th:nth-child(2) {
+     font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.cart-drawer .cart-items th {
+   font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.totals > h2 {
+     font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.totals__subtotal-value {
+    font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.cart-drawer .tax-note {
+    font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.cart-drawer .cart__checkout-button {
+   font-family:"Josefin Sans", sans-serif;
+   color: #000 !important;
+  background-color: #e8decc !important;
+}
+#Details-CartDrawer{
+  font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+.cart__note:after, .cart__note:hover.cart__note:after, .cart__note:before, .cart__note:hover.cart__note:before, .cart__note .field__input:focus, .cart__note .field__input{
+  font-family:"Josefin Sans", sans-serif;
+   color: #121212 !important;
+}
+
+.cart-gift {
+  display: block;
+  margin-block-end: 14px;
+}
+
+.cart-gift__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-gift__check {
+  display: none;
+}
+
+.cart-gift .cart-gift__input {
+  width: 1px;
+  visibility: hidden;
+  opacity: 0;
+  margin: 0;
+  margin-inline-start: -5px;
+}
+
+.cart-gift__input:checked + svg + svg {
+  display: block;
+}
+
+.cart-gift__check {
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  translate: 0 -55%;
+}
+
+.cart-gift__label {
+  margin-inline-start: 8px;
+}
+
+.cart__cart-gift {
+  margin-block-end: 44px;
+  margin-inline-start: 4px;
+}

@@ -1,0 +1,177 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "da0d9d24-3327-4111-b025-74c58d72508d": {
+      "type": "headingAndText",
+      "settings": {
+        "page_size": 1200,
+        "secTopPad": 30,
+        "secRightLeftPad": 15,
+        "secBottomPad": 30,
+        "mainHeaing": "Every skin is beautiful, skin types and products for you.",
+        "heading_fc": "#131313",
+        "heading_fz": 38,
+        "heading_fw": 400,
+        "heading_fz_mb": 33,
+        "mainText": "<p>We’re not just any ‘one size fits all’ skincare line - we have a range for every skin type. Understanding your skin type is just as important as understanding what makeup you like, or what shampoo you prefer. Skin is the largest organ in the human body, so naturally requires a little extra attention. Whether your skin is oily or dry, combination or sensitive, we have the thing for you.<\/p>",
+        "paraColor": "#000000",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "#e3ebda",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "10bcec17-ef54-4298-8eae-049521fd4802": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "blog": "our-blog",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "8c1666d8-cc5e-4dad-8c6f-a3c8d8484626": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 20,
+        "secRightLeftPad": 10,
+        "secBottomPad": 20,
+        "product": "acne-oil-control-serum",
+        "productImg2": "shopify:\/\/shop_images\/HG-Website---Acne-serum-model_1.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG-Website-Acne-serum-product_1.webp",
+        "mainHeaing": "Acne-Prone Skin",
+        "mainText": "<p>The struggles of fighting cystic acne is the very thing our brand is based upon. Acne comes in all shapes and sizes, but our Acne and Oil-Control Serum is designed to kill the bacteria that creates acne, and keep your skin clear and hydrated. We know that acne scarring can be just as hard to shift as acne itself, which is why we have products designed to heal scarring as well as fight acne.<\/p><p><br\/><\/p><p>Acne is nothing to be ashamed of; in fact, people with acne prone skin actually age slower, due to the natural oils being produced by the skin!<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: ACNE & OIL CONTROL SERUM<\/strong><\/p>",
+        "paraColor": "#000000",
+        "collectionText": "SHOP ACNE-PRONE SKIN",
+        "collection": "acne-oil-control",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "rgba(0,0,0,0)",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "4529383e-75fc-4fab-9548-993e3d818aa1": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 20,
+        "secRightLeftPad": 10,
+        "secBottomPad": 19,
+        "product": "detoxifying-night-brightening-serum",
+        "productImg2": "shopify:\/\/shop_images\/HG--Night-Brightening-Serum-Model.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG--Night-Brightening-Serum_1.webp",
+        "mainHeaing": "Dry Skin",
+        "mainText": "<p>Our skin is super sensitive to the weather, and dry skin is usually a product of the cold months in the year. Whether you have dry skin just in winter, or all year round, it can cause tightness in the face, and flakey skin. Dry skin can also be the product of overbathing, so being sure to moisturise after a shower, bath or even a swim is extremely important. For dry skin we recommend our Detoxifying Night Brightening Serum. This night-time serum contains 40+ restorative nutrients including vitamins and minerals which nourish skin and boost collagen production. Rich in Linoleic Acid, the serum also works to unclog pores and slow signs of ageing.<\/p><p><br\/><\/p><p>To accompany your skincare routine, humidifiers and gentle cleansing are both great ways to combat dry skin, as well as our <a href=\"https:\/\/herbalgardens.co.uk\/products\/makeup-melting-cleansing-oil\" target=\"_blank\"><strong>Makeup Melting Cleansing Oil,<\/strong><\/a> which cleanses the skin without leaving it flakey and dry.<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: DETOXIFYING NIGHT BRIGHTENING SERUM<\/strong><\/p>",
+        "paraColor": "#000000",
+        "collectionText": "SHOP FOR DRY SKIN",
+        "collection": "acne-oil-control",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "rgba(0,0,0,0)",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "abd8fc4e-9936-45a8-abbe-832712399cce": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 20,
+        "secRightLeftPad": 10,
+        "secBottomPad": 20,
+        "product": "bakuchiol-antioxidant-complex",
+        "productImg2": "shopify:\/\/shop_images\/HG---Balancing-Facial-Serum-Model.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG---Bakuchoil-Product-Ecomm.webp",
+        "mainHeaing": "Ageing \/ Tired Skin",
+        "mainText": "<p>Renew, repair and tone tired, dull looking skin with our Bakuchiol Antioxidant Complex; Nature's \"Retinol\".<\/p><p><br\/><\/p><p>Our Bakuchiol Antioxidant Complex is an oil-based serum for all skin types that helps fight and reverse the signs of ageing and environmental damage. Formulated with natural alternatives to conventional retinol, such as Bakuchiol and Cacay, that mimic the powerful benefits of retinol, without the restrictions or sensitivities. Packed with Ceramides, Antioxidants, Essential Fatty Acids, Vitamins and Minerals, this blend boosts collagen production, speeds up healing, deeply hydrates, and works to protect and repair skin. Long-term, regular use encourages the facial muscles to gently contract resulting in the face and neck looking more toned.<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: BAKUCHIOL ANTIOXIDANT COMPLEX<\/strong><\/p>",
+        "paraColor": "#000000",
+        "collectionText": "SHOP FOR MATURE SKIN",
+        "collection": "acne-oil-control",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "rgba(0,0,0,0)",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "ca213143-db82-4ac7-8390-223ff1fa4afd": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 20,
+        "secRightLeftPad": 10,
+        "secBottomPad": 20,
+        "product": "acne-oil-control-serum",
+        "productImg2": "shopify:\/\/shop_images\/HG-Website---Acne-serum-model_1.webp",
+        "productImg3": "shopify:\/\/shop_images\/HG-Website-Acne-serum-product_1.webp",
+        "mainHeaing": "Oily or Combination Skin",
+        "mainText": "<p>Oily skin is one of the most mistreated skin types, due to the misconception that it doesn't need moisturising. The skin can overproduce oil when it's actually dehydrated, thereby overcompensating for the lack of moisture. All of our products hydrate and nourish the skin, with more than 40 restorative and collagen boosting nutrients. However there are some pros with oily skin! Oils hydrate your skin, and therefore slow down the ageing process by keeping the skin plump and fighting off wrinkles. Those with oily skin also tan easier, with the right SPF and skincare of course!<\/p><p><br\/><\/p><p>Combination skin is the most common skin type, and is characterised as having an oily t-zone, but dry cheeks. Lots of blackheads are also a tell tale sign of combination skin, as well as flakey patches and random acne breakouts. Avoiding harsh fragrances and products containing alcohol, and using toners to balance out the pH levels in your skin all help both oily and dry skin.<\/p><p><br\/><\/p><p>For oily and combination skin we recommend our Acne & Oil-Control Serum; our anti-blemish oil with Sea Buckthorn, Hemp, Tea Tree & Clove. The serum works to unclog, clarify and mattify the skin. It is a silky, easily absorbed and non-greasy daily serum formulated for the prevention and treatment of acne, hyperpigmentation, and scars. Packed with nutrients that combat and treat acne-causing bacteria and replenish the skin’s natural barrier for a clear, plump, and radiant complexion. It also prevents the skin’s overproduction of oil and resulting acne by keeping skin hydrated without clogging pores.<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: ACNE & OIL-CONTROL SERUM<\/strong><\/p>",
+        "paraColor": "#000000",
+        "collectionText": "SHOP FOR OILY SKIN",
+        "collection": "acne-oil-control",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "rgba(0,0,0,0)",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    },
+    "d250f22c-c1b4-4e37-8b26-b0ee59cb9816": {
+      "type": "blog-with-product",
+      "settings": {
+        "page_size": 1000,
+        "secTopPad": 20,
+        "secRightLeftPad": 10,
+        "secBottomPad": 20,
+        "product": "lotus-blossom",
+        "productImg2": "shopify:\/\/shop_images\/HG---Lotus-Blossom-Moisturiser-Model.webp",
+        "productImg3": "shopify:\/\/shop_images\/MAKEUP-PDP_1024x1024_9e7bed9d-eb6b-416f-aa70-d0b981cfacbe.webp",
+        "mainHeaing": "Sensitive Skin",
+        "mainText": "<p>Sensitive skin is typically dry, red and prone to rashes or itchy patches. This could be a product of allergic reactions or just genetics. Unscented products are the must have, staple for anybody with sensitive skin, as well as products free from alcohol- which luckily, all of our products are.<\/p><p><br\/><\/p><p>For sensitive skin we recommend our Makeup Melting Cleansing Oil; a lightweight serum to cleanse you, keep you hydrated and make you glow. It is a serum that is easily absorbed by skin, rendering its ability to deeply penetrate and cleanse pores, melting away old sebum, dirt, and makeup without stripping or drying out skin.<\/p><p><br\/><\/p><p>Our second recommendation is our Lotus Blossom Natural Vaginal Moisturiser. Made with Pomegranate, Sea Buckthorn, Avocado & Vitamin E, Lotus Blossom is a 100% natural and hormone-free blend that reduces vaginal dryness, irritation, itchiness, discomfort, and pain during sex. It works to hydrate, regenerate, strengthen and improve elasticity of the skin, without harming the vagina’s natural pH balance.<\/p><p><br\/><\/p><p><strong>FOUNDER'S STAR RECOMMENDATION: LOTUS BLOSSOM OR MAKEUP MELTING CLEANSING OIL<\/strong><\/p>",
+        "paraColor": "#000000",
+        "collectionText": "ADD",
+        "collection": "acne-oil-control",
+        "paraSize": 16,
+        "paraWeight": 500,
+        "bgColor": "rgba(0,0,0,0)",
+        "paraSize_mob": 14,
+        "padding_tb_mb": 15,
+        "padding_lr_mb": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "da0d9d24-3327-4111-b025-74c58d72508d",
+    "10bcec17-ef54-4298-8eae-049521fd4802",
+    "8c1666d8-cc5e-4dad-8c6f-a3c8d8484626",
+    "4529383e-75fc-4fab-9548-993e3d818aa1",
+    "abd8fc4e-9936-45a8-abbe-832712399cce",
+    "ca213143-db82-4ac7-8390-223ff1fa4afd",
+    "d250f22c-c1b4-4e37-8b26-b0ee59cb9816"
+  ]
+}

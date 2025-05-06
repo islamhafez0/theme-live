@@ -1,0 +1,383 @@
+<div class="{{ section.id }}">
+  <div class="maincontainer">
+    <div class="image-with-text-main">
+      <div class="image-with-text-box-1"><img src="{{ section.settings.image | img_url: 'master' }}"></div>
+      <div class="image-with-text-box-2">
+        {% comment %}
+         Changes made By Mohamed Badawy to remove duplicated H1
+        code before edits was;
+        <h2 class="image-with-text-heading">{{ section.settings.heading }}</h2>
+        <div class="image-with-text-para">{{ section.settings.para }}</div>
+        {% endcomment %}
+        <h2 class="image-with-text-heading">{{ section.settings.heading }}</h2>
+        <div class="image-with-text-para">{{ section.settings.para }}</div>
+        <div class="btnContainer">
+          <a href="{{ section.settings.btnUrl }}">{{ section.settings.btnText }}</a>
+          <hr class="underline">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+      .{{ section.id }} .image-with-text-main{
+        padding: {{ section.settings.body_padding_top_bottom_desktop }}px {{ section.settings.body_padding_right_left_desktop }}vw;
+
+        display: flex;
+        flex-direction: {{ section.settings.imagePosition }};
+       align-items: flex-start;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+      }
+      .maincontainer{
+       padding: 100px 50px;
+        width: 100%;
+           background-color: {{ section.settings.background }};
+      }
+      .image-with-text-para p:empty{
+        display: block;
+        padding: 15px 0px;
+      }
+      .image-with-text-box-1{
+        width:50%;
+      }
+      .image-with-text-box-1 img{
+        width: 100%;
+      }
+  .underline {
+      border-style: solid!important;
+      border-color: #333!important;
+      width: 13.5%!important;
+      border-top-width: 1px!important;
+      border-right-width: 0px!important;
+      border-bottom-width: 0px!important;
+      border-left-width: 0px!important;
+      padding-top: 0!important;
+      margin: 10px 0 0;
+  }
+  .{{ section.id }} hr{
+    margin: 0 !important;
+    height: 0px !important;
+    background-color: inherit !important;
+  }
+      .image-with-text-box-2{
+        width:50%;
+      }
+      .{{ section.id }} .image-with-text-heading{
+        margin: 0;
+         color: {{section.settings.text_color_1}};
+         font-weight: {{section.settings.heading_font_weight_desktop}};
+         font-size: {{section.settings.heading_font_size_desktop}}px !important;
+         line-height: 1.8em!important;
+         letter-spacing: .6px!important;
+         font-family: BrandonGrotesque!important;
+         text-transform: none!important;
+         padding-top: 0!important;
+      }
+      .image-with-text-heading p{
+        margin: 0;
+        line-height: 1.5;
+      }
+       .image-with-text-heading strong{
+        /* font-size: 22px;
+        font-weight: 500; */
+        margin: 0 0 10px;
+       font-size: 22px;
+      line-height: 1.8em;
+      letter-spacing: .6px;
+      font-family: BrandonGrotesque;
+      color: #242424;
+      text-transform: none;
+      font-weight: 400;
+      padding-top: 0;
+      }
+      .btnContainer{
+        margin-top: 15px;
+      }
+      .btnContainer a{
+        text-decoration: none;
+        color: #242424;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 15px!important;
+        font-family: 'BrandonGrotesque';
+      }
+      .image-with-text-para{
+        margin: 42px 0;
+      }
+      .image-with-text-para p{
+        color: {{section.settings.para_color_1}};
+        font-family: BrandonGrotesque;
+        font-weight: {{section.settings.para_font_weight_desktop}};
+        font-size: {{section.settings.para_font_size_desktop}}px;
+        line-height: 1.8em!important;
+        width: 100%;
+        max-width: 84%;
+        letter-spacing: 0;
+      }
+       @media screen and (max-width: 1200px) {
+      .{{ section.id }} .image-with-text-heading {
+        font-size: 25px;
+        line-height: 1.8em;
+    }
+         .image-with-text-heading strong {
+         font-size: 18px;
+        line-height: 1.8em;
+       }
+       }
+      @media screen and (max-width: 768px) {
+    .image-with-text-para p{
+      max-width: 100%;
+      line-height: 1.8em!important;
+      letter-spacing: 0px!important;
+      font-family: BrandonGrotesque!important;
+      color: #000000 !important;
+      text-transform: none!important;
+      font-weight: 400!important;
+      padding-top: 1px!important;
+    }
+         .image-with-text-para p:empty{
+        padding: 0px;
+      }
+      }
+      @media screen and (max-width: 767px) {
+       .image-with-text-main {
+              flex-direction: column;
+       }
+          .image-with-text-box-1{
+            display: none;
+            /* width:100%;
+          padding: 0px; */
+      }
+      .image-with-text-box-2{
+        width:100%;
+       padding: 0px;
+      }
+        .{{ section.id }} .image-with-text-heading{
+         font-size: {{section.settings.heading_font_size_mobile}}px !important;
+          text-align: center;
+          margin: 0px 0px 20px
+
+      }
+      .image-with-text-para p{
+         font-size: {{section.settings.para_font_size_mobile}}px;
+         margin: 10px 0px 0px;
+         text-align: center;
+      }
+        .btnContainer{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+</style>
+{% schema %}
+  {
+    "name": "Image With Paragraph",
+    "settings": [
+      {
+      "type": "header",
+      "content": {
+        "en": "Mobile Responsive Settings"
+      }
+    },
+
+       {
+  "type": "range",
+  "id": "body_padding_top_bottom_mobile",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "Section Padding Top/Bottom",
+  "default": 1
+},
+      {
+  "type": "range",
+  "id": "body_padding_right_left_mobile",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "vw",
+  "label": "Section Padding Right/Left",
+  "default": 6
+},
+      {
+  "type": "range",
+  "id": "heading_font_size_mobile",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Font size mobile",
+  "default": 16
+},
+
+       {
+  "type": "range",
+  "id": "para_font_size_mobile",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Answer Text Font size mobile",
+  "default": 16
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Section Body Padding And Background Color"
+      }
+    },
+      {
+  "type": "color",
+  "id": "background",
+  "label": "Background Color",
+  "default": "#fff"
+},
+       {
+  "type": "range",
+  "id": "body_padding_top_bottom_desktop",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "Section Padding Top/Bottom",
+  "default": 1
+},
+      {
+  "type": "range",
+  "id": "body_padding_right_left_desktop",
+  "min": 0,
+  "max": 60,
+  "step": 1,
+  "unit": "vw",
+  "label": "Section Padding Right/Left",
+  "default": 6
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Image Settings"
+      }
+    },
+       {
+  "type": "image_picker",
+  "id": "image",
+  "label": "Image"
+      },
+      {
+  "type": "select",
+  "id": "imagePosition",
+  "label": "Image Position",
+  "options": [
+    {
+      "value": "row-reverse",
+      "label": "Image to the Right"
+    },
+    {
+      "value": "row",
+      "label": "Image to the Left"
+    }
+  ],
+  "default": "row-reverse"
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Heading Settings"
+      }
+    },
+       {
+  "type": "richtext",
+  "id": "heading",
+  "label": "Heading Text"
+},
+       {
+  "type": "color",
+  "id": "text_color_1",
+  "label": "color Heading",
+  "default": "#fff"
+},
+
+      {
+  "type": "range",
+  "id": "heading_font_size_desktop",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Font size Desktop",
+  "default": 16
+},
+      {
+  "type": "range",
+  "id": "heading_font_weight_desktop",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "Heading Font Weight",
+  "default": 500
+},
+      {
+      "type": "header",
+      "content": {
+        "en": "Paragraph Settings"
+      }
+    },
+      {
+  "type": "richtext",
+  "id": "para",
+  "label": "Paragraph"
+},
+       {
+  "type": "color",
+  "id": "para_color_1",
+  "label": "color Paragraph",
+  "default": "#fff"
+},
+
+      {
+  "type": "range",
+  "id": "para_font_size_desktop",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Paragraph Text Font size Desktop",
+  "default": 18
+},
+      {
+  "type": "range",
+  "id": "para_font_weight_desktop",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "label": "Paragraph Text Font Weight",
+  "default": 600
+},
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "url",
+        "id": "btnUrl",
+        "label": "Button link"
+      },
+      {
+        "type": "text",
+        "id": "btnText",
+        "label": "Button Text",
+        "default": "Shop Now"
+      }
+    ],
+     "presets": [
+    {
+      "name": "Image With Paragraph"
+    }
+  ]
+  }
+{% endschema %}
